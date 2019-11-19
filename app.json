@@ -2,9 +2,7 @@
     "name": "Gathee",
     "description": "Gathee's app.",
     "keywords": [
-      "productivity",
-      "HTML5",
-      "scalpel"
+      "gathee"
     ],
     "website": "https://gathee.herokuapp.com/",
     "repository": "https://github.com/xcixor/gathee",

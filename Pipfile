@@ -9,6 +9,9 @@ coveralls = "*"
 
 [packages]
 django = "==2.2.7"
+gunicorn = "*"
+django-heroku = "*"
+whitenoise = "*"
 
 [requires]
 python_version = "3.7"

@@ -18,15 +18,7 @@
       }
     },
     "image": "heroku/ruby",
-    "addons": [
-      "openredis",
-      {
-        "plan": "heroku-postgresql",
-        "options": {
-          "version": "9.5"
-        }
-      }
-    ],
+    "addons": [],
     "buildpacks": [
       {
         "url": "https://github.com/stomita/heroku-buildpack-phantomjs"

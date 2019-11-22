@@ -7,9 +7,6 @@ from .forms import LoginForm
 
 def login_request(request):
     """Authenticates user credentials and grants account access."""
-    # next_page = request.GET['next']
-    # if request.user.is_authenticated():
-    #     return HttpResponseRedirect(next_page)
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():

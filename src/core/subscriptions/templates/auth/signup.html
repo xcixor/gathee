@@ -116,19 +116,15 @@
                                     {% endif %}
                                 </div>
                                 <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-2 col-lg-2 col-sm-4 col-xs-4">
-                                            <!-- <select class="custom-select" >
-                                                <option selected>Country Code</option>
-                                                {% for code in codes %}
-                                                    <option value="{{ code.pk }}" name="country_code">{{ code }}</option>
-                                                {% endfor %}
-                                            </select> -->
+                                    <!-- <div class="row"> -->
+                                        <!-- <div class="col-md-2 col-lg-2 col-sm-4 col-xs-4">
                                             {{ form.country_code }}
-                                        </div>
-                                        <div class="col-md-10 col-lg-10 col-sm-8 col-xs-8">
+                                        </div> -->
+                                        <!-- <div class="col-md-10 col-lg-10 col-sm-8 col-xs-8">
                                             <input type="tel" name="phone_number" placeholder="Phone Number" class="form-control">
-                                        </div>
+                                        </div> -->
+                                        <label class="control-label">MobilePhone No :</label>
+                                        <input type="tel" name="phone_number" placeholder="Phone Number" class="form-control">
                                         {% if form.phone_number.errors %}
                                         {% for error in form.phone_number.errors %}
                                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
@@ -138,7 +134,7 @@
                                         </div>
                                         {% endfor %}
                                         {% endif %}
-                                    </div>
+                                    <!-- </div> -->
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn ed_btn ed_orange pull-right">Signup</button>

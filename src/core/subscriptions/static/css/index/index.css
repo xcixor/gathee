@@ -1,0 +1,19 @@
+.alert {
+    margin-bottom: 0 !important;
+}
+
+.close {
+    font-size: 25px !important;
+    font-weight: 900 !important;
+    color: black !important;
+}
+
+#logoutLink {
+    text-decoration: none;
+    color: white;
+}
+
+#logoutLink:hover{
+    font-weight: 600 !important;
+    color: orangered !important;
+}

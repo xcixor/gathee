@@ -1,0 +1,447 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+{{ block.super }}
+<link href="{% static 'css/index/index.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert {{ message.tags }}" role="alert">
+            <strong>{{ message }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+{% endif %}
+<!--Page main section start-->
+<div id="educo_wrapper">
+    <!--Header start-->
+    <header id="ed_header_wrapper">
+        <div class="ed_header_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12" id="top-nav">
+                        {% if request.user.is_authenticated %}
+                            <p>welcome {{ request.user.username }} /
+                                <a href="/logout" id="logoutLink">logout</a>
+                            </p>
+                        {% else %}
+                        <p>welcome guest</p>
+                        <div class="ed_info_wrapper">
+                            <a href="#" id="login_button">Login</a>
+                                <div id="login_one" class="ed_login_form">
+                                    <h3>log in</h3>
+                                    <form class="form" method="POST" action="/login">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label class="control-label">Username :</label>
+                                            <input type="text" name="username" class="form-control" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label  class="control-label">Password :</label>
+                                            <input type="password" name="password" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit">login</button>
+                                            <a href="/signup" >sign up</a>
+                                        </div>
+                                    </form>
+                                </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ed_header_bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <div class="educo_logo"> <a href="index.html"><img src="{% static 'images/header/Logo.png' %}" alt="logo" /></a> </div>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8">
+                        <div class="edoco_menu_toggle navbar-toggle" data-toggle="collapse" data-target="#ed_menu">Menu <i class="fa fa-bars"></i>
+                        </div>
+                        <div class="edoco_menu">
+                            <ul class="collapse navbar-collapse" id="ed_menu">
+                                <li><a href="index.html">Home</a>
+
+                                </li>
+                                <li><a href="about.html">about us</a></li>
+                                <!-- <li><a href="#">blog</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="blog.html">blog-large</a></li>
+                                        <li><a href="blog_med.html">blog-medium</a></li>
+                                        <li><a href="blog_single.html">blog-single</a></li>
+                                    </ul>
+                                </li> -->
+                                <li><a href="event_single.html">events</a>
+                                    <!-- <ul class="sub-menu">
+                                        <li><a href="events.html">all events</a></li>
+                                        <li><a href="event_single.html">events-single</a></li>
+                                    </ul> -->
+                                </li>
+                                <li><a href="#">courses</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="courses.html">Guitar</a></li>
+                                        <li><a href="courses.html">Keyboard</a></li>
+                                        <li><a href="courses.html">Drumset</a></li>
+                                        <li><a href="courses.html">DJ Academy</a></li>
+                                    </ul>
+                                </li>
+
+                                <li><a href="contact.html">Contact Us</a></li>
+                                {% if request.user.is_authenticated %}
+                                <li><a href="#">{{request.user.username}}</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="/profile">My Profile</a></li>
+                                        <li><a href="/account">Account Settings</a></li>
+                                    </ul>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- <div class="col-lg-2 col-md-2 col-sm-2">
+                        <div class="educo_call"><i class="fa fa-phone"></i><a href="#">+254 726173014</a></div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--header end -->
+    <div class="ed_slider_form_section">
+    <!--Slider start-->
+
+    <div class=bg-image>
+
+    </div>
+        <section cla ss="ed_mainslider">
+            <article class="content">
+                <div class="rev_slider_wrapper">
+                    <!-- START REVOLUTION SLIDER 5.0 auto mode -->
+                    <div id="rev_slider_4_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container"
+                    data-alias="classicslider1">
+                    <div id="rev_slider" class="rev_slider "  data-version="5.0">
+                        <ul>
+                            <!-- SLIDE  -->
+                            <li data-transition="slotslide-horizontal">
+
+                                <!-- MAIN IMAGE -->
+                                <img src="{% static 'images/piano.png' %}"  alt="piano image">
+                                <div class="ed_course_single_image_overlay"></div>
+
+                                <!-- LAYER NR. 1 -->
+                                    <div class="tp-caption NotGeneric-Title   tp-resizeme rs-parallaxlevel-0"
+
+                                         data-x="['left','left','left','left']" data-hoffset="['45','60','60','40']"
+                                        data-y="['top','top','top','top']" data-voffset="['170','175','155','115']"
+
+
+                                        data-width="none"
+                                        data-height="none"
+                                        data-whitespace="nowrap"
+                                        data-transform_idle="o:1;"
+
+                                         data-transform_in="x:-50px;skX:100px;opacity:0;s:2000;e:Power4.easeInOut;"
+                                         data-transform_out="s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                                        data-start="1510"
+                                        data-splitin="none"
+                                        data-splitout="none"
+                                        data-responsive_offset="on"
+
+                                        data-elementdelay="0.05"
+
+                                        style="z-index: 5; white-space: nowrap; font-size: 40px; color:#fff; font-family: 'Roboto Slab', serif;">We help students reach
+                                        their music goals
+                                    </div>
+                                    <div class="tp-caption NotGeneric-Title   tp-resizeme rs-parallaxlevel-0"
+
+                                        data-x="['left','left','left','left']" data-hoffset="['45','60','60','40']"
+                                        data-y="['top','top','top','top']" data-voffset="['230','215','180','170']"
+
+                                        data-width="none"
+                                        data-height="none"
+                                        data-whitespace="nowrap"
+                                        data-transform_idle="o:1;"
+
+                                         data-transform_in="x:-50px;skX:100px;opacity:0;s:2000;e:Power4.easeInOut;"
+                                         data-transform_out="s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                                        data-start="1810"
+                                        data-splitin="none"
+                                        data-splitout="none"
+                                        data-responsive_offset="on"
+
+                                        data-elementdelay="0.05"
+
+                                        style="z-index: 5; white-space: nowrap; font-size: 40px; color:#fff;     font-family: 'Roboto Slab', serif;">faster and more efficiently.
+                                    </div>
+
+                            </li>
+
+                        </ul>
+                    </div><!-- END REVOLUTION SLIDER -->
+                    </div><!-- END  -->
+                </div><!-- END REVOLUTION SLIDER WRAPPER -->
+            </article>
+        </section>
+    <!--Slider end-->
+    <!--Slider form start-->
+    <!-- <div class="ed_form_box">
+    <div class="container">
+        <div class="ed_search_form">
+            <form class="form-inline">
+              <div class="form-group">
+                <input type="text" placeholder="Course Name" class="form-control" id="course">
+              </div>
+              <div class="form-group">
+                <input type="text" placeholder="Location" class="form-control" id="location">
+              </div>
+              <div class="form-group">
+                <input type="text" placeholder="Language" class="form-control" id="language">
+              </div>
+              <div class="form-group">
+                <input type="text" placeholder="Type" class="form-control" id="type">
+              </div>
+              <div class="form-group">
+              <div class="ed_dots"><p><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></p></div>
+              <button type="button" class="btn ed_btn pull-right ed_orange">search</button>
+              </div>
+            </form>
+        </div>
+    </div>
+    </div> -->
+    <!--Slider form end-->
+    </div>
+
+    <!--Our expertise section one start -->
+    <div class="ed_transprentbg ed_toppadder100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="ed_heading_top ed_toppadder50">
+                        <h3>Our Courses</h3>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="ed_populer_areas_slider">
+                        <div class="owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="ed_item_img">
+                                    <img src="{% static 'images/music2.png' %}" alt="item1" class="img-responsive">
+                                </div>
+
+                                <!-- classes offered -->
+
+                                <div class="ed_item_description">
+                                    <h4>Guitar</h4>
+                                    <p>We offer guitar classes at our camous on Thika Road, as well as online lessons.</p>
+                                    <a href="courses.html" class="ed_getinvolved">Go to Course <i class="fa fa-long-arrow-right"></i></a>
+                                </div>
+                            </div>
+
+                            <!-- later additions -->
+
+                            <div class="item">
+                                <div class="ed_item_img">
+                                    <img src="{% static 'images/music1.png' %}" alt="item2" class="img-responsive">
+                                </div>
+                                <div class="ed_item_description">
+                                    <h4>Vocals Training</h4>
+                                    <p>We offer drumset classes at our Thika Road campus.</p>
+                                    <!-- <a href="#" class="ed_getinvolved">go to course <i class="fa fa-long-arrow-right"></i></a> -->
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="ed_item_img">
+                                    <img src="{% static 'images/music3.png' %}" alt="item3" class="img-responsive">
+                                </div>
+                                <div class="ed_item_description">
+                                    <h4>DJ Academy</h4>
+                                    <p>We offer DJ classes at our Thika road campus.</p>
+                                    <!-- <a href="#" class="ed_getinvolved">go to course <i class="fa fa-long-arrow-right"></i></a> -->
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="ed_item_img">
+                                    <img src="{% static 'images/music4.png' %}" alt="item4" class="img-responsive">
+                                </div>
+                                <div class="ed_item_description">
+                                    <h4>Drumset</h4>
+                                    <p>We offer vocal training classes at our Thika road campus.</p>
+                                    <!-- <a href="#" class="ed_getinvolved">go to course <i class="fa fa-long-arrow-right"></i></a> -->
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.container -->
+    </div>
+
+
+    <!--skill section start -->
+
+    <div class="ed_graysection ed_toppadder90 ed_bottompadder90">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="skill_section">
+
+                        <div class="ed_video_section">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <div class="ed_video">
+                                    <img src="{% static 'images/placeholder.png' %}" style="cursor:pointer"  alt="1" />
+                                    <div class="ed_img_overlay">
+                                        <!-- <a href="#"><i class="fa fa-chevron-right"></i></a> -->
+                                    </div>
+                                </div>
+                                <iframe id="educo_video" class="embed-responsive-item" src="https://www.youtube.com/watch?v=7fr6VjPgCJQ&t=10s" allowfullscreen></iframe>
+                            </div>
+                        </div>
+
+                        <h4>Learn with the best</h4>
+                        <p>At Nyota Music Academy, we live for music. We have excellent teachers and musicians who are dedicated to teaching and passing on their passion
+                            to their students.</p>
+                        <!-- <span><i class="fa fa-tachometer"></i></span> -->
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="skill_section">
+
+                        <div class="videoWrapper">
+                            <!-- Copy & Pasted from YouTube -->
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/T1Q4nAaEgQo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <!-- <iframe width="560" height="349" src="http://www.youtube.com/embed/n_dZNLr2cME?rel=0&hd=1" frameborder="0" allowfullscreen></iframe> -->
+                        </div>
+
+                        <h4>Studying at Nyota Music Academy</h4>
+                        <p>We excel in multiple areas, and we are the number one music school for kikuyu music.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--video_section Section three end -->
+    <!-- Most recomended Courses Section four start -->
+
+    <!-- <div class="ed_transprentbg ed_toppadder80 ed_bottompadder80">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="ed_heading_top ed_bottompadder80">
+                        <h3>Most Popular Online Course</h3>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="ed_mostrecomeded_course_slider ed_mostrecomededcourseslider">
+                        <div id="owl-demo3" class="owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="ed_item_img">
+                                    <img src="images/music2.png" alt="item1" class="img-responsive">
+                                </div>
+                                <div class="ed_item_description ed_most_recomended_data">
+                                        <h4><a href="course_single.html">Country Music</a><span>Kes.25,000</span></h4>
+                                        <div class="row">
+                                            <div class="ed_rating">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        </div> -->
+
+                                                        <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="course_detail">
+                                            <div class="course_faculty">
+                                             <a href="instructor_dashboard.html">Gathee Wa Njeri</a>
+                                            </div>
+                                        </div>
+                                        <p>In this Guitar class, our talented musician and teacher will teach you all the great tunes of Kamaru. Right from chords to mastery.</p>
+                                        <a href="course_single.html" class="ed_getinvolved">go to course <i class="fa fa-long-arrow-right"></i></a>
+                                </div>
+                            </div> -->
+                            <!-- <div class="item">
+                                <div class="ed_item_img">
+                                    <img src="images/music.png" alt="item1" class="img-responsive">
+                                </div>
+                                <div class="ed_item_description ed_most_recomended_data">
+                                        <h4><a href="course_single.html">Rhumba</a><span>Kes. 25,000</span></h4>
+                                        <div class="row">
+                                            <div class="ed_rating">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="course_detail">
+                                            <div class="course_faculty">
+                                            <a href="instructor_dashboard.html">Gathee wa njeri</a>
+                                            </div>
+                                        </div>
+                                        <p>Do you wish you could play the classics by Franco Luambo Makiadi and all the great Rhumba musicians. In this course, we teach you all about rhumba.</p>
+                                        <a href="course_single.html" class="ed_getinvolved">go to course <i class="fa fa-long-arrow-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="ed_item_img">
+                                    <img src="images/music3.png" alt="item1" class="img-responsive">
+                                </div> -->
+                                <!-- <div class="ed_item_description ed_most_recomended_data"></div> -->
+                            <!-- </div>
+                            <div class="item">
+                                <div class="ed_item_img">
+                                    <img src="images/music4.png" alt="item1" class="img-responsive">
+                                </div>
+                                <div class="ed_item_description ed_most_recomended_data">
+                                        <h4><a href="course_single.html">Zilizopendwa </a><span>Kes. 15,000</span></h4>
+                                        <div class="row">
+                                            <div class="ed_rating">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        </div> -->
+                                                    <!-- </div>
+                                                </div> -->
+                                                <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div> -->
+                                                <!-- </div>
+                                            </div>
+                                        </div>
+                                        <div class="course_detail">
+                                            <div class="course_faculty">
+                                             <a href="instructor_dashboard.html"> Gathee wa njeri</a>
+                                            </div>
+                                        </div>
+                                        <p>Learn to play songs by Kidum, Nameless, Bongo flava and other east african classics. East African music best school for musicians.</p>
+                                        <a href="course_single.html" class="ed_getinvolved">go to course <i class="fa fa-long-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    </div>
+    <!--Page main section end-->
+{% endblock %}

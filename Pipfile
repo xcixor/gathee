@@ -13,6 +13,9 @@ django = "==2.2.7"
 gunicorn = "*"
 django-heroku = "*"
 whitenoise = "*"
+psycopg2 = "==2.8.4"
+pillow = "*"
+twilio = "*"
 
 [requires]
 python_version = "3.7"

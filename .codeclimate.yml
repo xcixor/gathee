@@ -16,6 +16,6 @@ exclude_patterns: [
   "Tests/",
   "**/vendor/",
   "**/*_test.go",
-  "**/*.d.ts"
+  "**/*.d.ts",
+  "src/core/subscription/static"
   ]
-  

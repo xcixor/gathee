@@ -20,15 +20,17 @@ class UserRegistrationForm(forms.ModelForm):
     """
     class Meta:
         model = User
-        fields = ('username', 'email', 'firstname', 'lastname', 'surname', 'phone_number', 'country_code')
+        fields = ('username', 'email', 'firstname', 'lastname', 'surname', 'phone_number')
 
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
-    CHOICES_A = CountryCode.objects.all()
-    CHOICE_LIST = []
-    for choice in CHOICES_A:
-        CHOICE_LIST.append((choice.country, choice))
-    country_code = forms.ChoiceField(choices=CHOICE_LIST, widget=forms.Select(attrs={'class':'custom-select'}))
+    # country_codes = CountryCode.objects.all()
+    # CHOICE_LIST = []
+    # for code in country_codes:
+    #     CHOICE_LIST.append((code.country, code))
+    # country_code = forms.ChoiceField(choices=CHOICE_LIST,
+    #                                  widget=forms.Select(
+    #                                      attrs={'class':'custom-select'}))
 
 
     def clean_password2(self):
@@ -49,13 +51,13 @@ class UserRegistrationForm(forms.ModelForm):
             raise forms.ValidationError('Passwords don\'t match.')
         return cleaned_data['password2']
 
-    def clean_country_code(self):
-        """
-        Clean country code
-        """
-        country = self.data['country_code']
-        country_code = CountryCode.objects.filter(country=country).first()
-        return country_code
+    # def clean_country_code(self):
+    #     """
+    #     Clean country code
+    #     """
+    #     country = self.data['country_code']
+    #     country_code = CountryCode.objects.filter(country=country).first()
+    #     return country_code
 
     def clean_phone_number(self):
         """
@@ -63,9 +65,9 @@ class UserRegistrationForm(forms.ModelForm):
         """
         cleaned_data = self.cleaned_data
         phone_number = cleaned_data["phone_number"]
-        country = self.data['country_code']
-        country_code = CountryCode.objects.filter(country=country).first()
-        return TwilioValidation().phone_validation(country_code, phone_number)
+        # country = self.data['country_code']
+        # country_code = CountryCode.objects.filter(country=country).first()
+        return TwilioValidation().phone_validation(get_default(), phone_number)
 
     def save(self, commit=True):
         """

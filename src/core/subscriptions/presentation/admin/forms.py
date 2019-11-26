@@ -7,7 +7,7 @@ from subscriptions.models.video.models import Video
 
 class VideoForm(ModelForm):
     class Meta:
-        model=Video
+        model = Video
         fields = ["name", "video_file", "course"]
 
     def clean_name(self):
@@ -20,7 +20,6 @@ class VideoForm(ModelForm):
 
     def clean_video_file(self):
         video = self.cleaned_data['video_file']
-        from django.core.exceptions import ValidationError
         ext = os.path.splitext(video.name)[1]  # [0] returns path+filename
         valid_extensions = ['.flv', '.mp4', '.m3u8', '.ts', '.3gp', '.mov', '.avi', '.wmv']
         if not ext.lower() in valid_extensions:

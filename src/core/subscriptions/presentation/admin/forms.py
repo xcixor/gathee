@@ -23,7 +23,7 @@ class VideoForm(ModelForm):
     def clean_video_file(self):
         video = self.cleaned_data['video_file']
         ext = os.path.splitext(video.name)[1]  # [0] returns path+filename
-        valid_extensions = ['.flv', '.mp4', '.m3u8', '.ts', '.3gp', '.mov', '.avi', '.wmv']
+        valid_extensions = ['.flv', '.mp4', '.m3u8', '.ts', '.3gp', '.mov', '.avi', '.wmv', '.mkv']
         if not ext.lower() in valid_extensions:
             raise ValidationError(u'Unsupported file extension. *{}*'.format(ext))
         else:
@@ -46,7 +46,7 @@ class DemoVideoForm(ModelForm):
     def clean_video_file(self):
         video = self.cleaned_data['video_file']
         ext = os.path.splitext(video.name)[1]  # [0] returns path+filename
-        valid_extensions = ['.flv', '.mp4', '.m3u8', '.ts', '.3gp', '.mov', '.avi', '.wmv']
+        valid_extensions = ['.flv', '.mp4', '.m3u8', '.ts', '.3gp', '.mov', '.avi', '.wmv', '.mkv']
         if not ext.lower() in valid_extensions:
             raise ValidationError(u'Unsupported file extension. *{}*'.format(ext))
         else:

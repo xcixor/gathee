@@ -2,3 +2,4 @@
 *.tox/*
 *env*
 staticfiles
+src/core/media/

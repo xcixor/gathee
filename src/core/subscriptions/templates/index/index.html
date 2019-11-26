@@ -237,24 +237,22 @@
                                 <div class="ed_item_description">
                                     <h4>{{ course.title }}</h4>
                                     <p>{{ course.description }}</p>
-                                    <a href="courses.html" class="ed_getinvolved">Go to Course <i class="fa fa-long-arrow-right"></i></a>
                                 </div>
                             </div>
                             {% endfor %}
                         </div>
+                        <a href="courses.html" class="ed_getinvolved">Go to Courses <i class="fa fa-long-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </div><!-- /.container -->
     </div>
-
-
     <!--skill section start -->
 
     <div class="ed_graysection ed_toppadder90 ed_bottompadder90">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="skill_section">
 
                         <div class="ed_video_section">
@@ -262,7 +260,6 @@
                                 <div class="ed_video">
                                     <img src="{% static 'images/placeholder.png' %}" style="cursor:pointer"  alt="1" />
                                     <div class="ed_img_overlay">
-                                        <!-- <a href="#"><i class="fa fa-chevron-right"></i></a> -->
                                     </div>
                                 </div>
                                 <iframe id="educo_video" class="embed-responsive-item" src="https://www.youtube.com/watch?v=7fr6VjPgCJQ&t=10s" allowfullscreen></iframe>
@@ -272,23 +269,29 @@
                         <h4>Learn with the best</h4>
                         <p>At Nyota Music Academy, we live for music. We have excellent teachers and musicians who are dedicated to teaching and passing on their passion
                             to their students.</p>
-                        <!-- <span><i class="fa fa-tachometer"></i></span> -->
                     </div>
-                </div>
+                </div> -->
+                {% for video in demo_videos %}
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="skill_section">
-
-                        <div class="videoWrapper">
-                            <!-- Copy & Pasted from YouTube -->
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/T1Q4nAaEgQo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            <!-- <iframe width="560" height="349" src="http://www.youtube.com/embed/n_dZNLr2cME?rel=0&hd=1" frameborder="0" allowfullscreen></iframe> -->
+                        <div class="ed_video_section">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                        <div class="ed_video">
+                                            <div class="videoWrapper">
+                                                    <video width="100%" height="315" controls>
+                                                        <source src='{{ MEDIA_URL }}{{ video }}' type='video/mp4'>
+                                                            Your browser does not support the video tag.
+                                                    </video>
+                                            </div>
+                                    </div>
+                                </div>
                         </div>
-
-                        <h4>Studying at Nyota Music Academy</h4>
-                        <p>We excel in multiple areas, and we are the number one music school for kikuyu music.</p>
+                        <h4>{{ video.premium_video.name }}</h4>
+                        <p>{{ video.demo_video.description }}</p>
 
                     </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -409,4 +412,12 @@
     </div> -->
     </div>
     <!--Page main section end-->
+
+{% endblock %}
+{% block scripts %}
+{{ block.super }}
+<script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'}),_trfd.push({'ap':'cpsh'},{'server':'p3plcpnl0769'})
+// Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.
+</script><script src='https://img1.wsimg.com/tcc/tcc_l.combined.1.0.6.min.js'>
+</script>
 {% endblock %}

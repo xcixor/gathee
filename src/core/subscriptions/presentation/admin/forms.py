@@ -2,7 +2,9 @@
 import os
 import re
 from django.forms import ModelForm, ValidationError
+from django.core.files.images import get_image_dimensions
 from subscriptions.models.video.models import PremiumVideo, DemoVideo
+from subscriptions.models.courses.models import Course
 
 
 class VideoForm(ModelForm):
@@ -49,3 +51,27 @@ class DemoVideoForm(ModelForm):
             raise ValidationError(u'Unsupported file extension. *{}*'.format(ext))
         else:
             return video
+
+
+class CoursesForm(ModelForm):
+
+    class Meta:
+        model = Course
+        fields = ["title", "description", "course_image"]
+
+    def clean_title(self):
+        regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
+        title = self.cleaned_data['title']
+        if (regex.search(title) == None):
+            return title
+        else:
+            raise ValidationError("Video name cannot contain special characters such as @# or !")
+
+    def clean_course_image(self):
+        course_image = self.cleaned_data['course_image']
+        if course_image:
+            width, height = get_image_dimensions(course_image)
+            if width < 260 or height < 165:
+                raise ValidationError("The image cannot be less than 260px wide and 165px high")
+            else:
+                return course_image

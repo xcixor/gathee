@@ -1,8 +1,8 @@
 from django.contrib import admin
 from subscriptions.models.auth.models import User, CountryCode
 from subscriptions.models.video.models import PremiumVideo, DemoVideo, PremiumVideoDemo
-from subscriptions.presentation.admin.forms import VideoForm, DemoVideoForm
-from subscriptions.models.courses.models import Courses
+from subscriptions.presentation.admin.forms import VideoForm, DemoVideoForm, CoursesForm
+from subscriptions.models.courses.models import Course
 
 
 class PremiumVideoAdmin(admin.ModelAdmin):
@@ -10,12 +10,16 @@ class PremiumVideoAdmin(admin.ModelAdmin):
     form = VideoForm
 
 class DemoVideoAdmin(admin.ModelAdmin):
-    """Defines the video management form for the admin."""
+    """Defines the Demo video management form for the admin."""
     form = DemoVideoForm
+
+class CourseAdmin(admin.ModelAdmin):
+    """Defines the Course management form for the admin."""
+    form = CoursesForm
 
 admin.site.register(User)
 admin.site.register(CountryCode)
 admin.site.register(PremiumVideo, PremiumVideoAdmin)
-admin.site.register(Courses)
+admin.site.register(Course, CourseAdmin)
 admin.site.register(DemoVideo, DemoVideoAdmin)
 admin.site.register(PremiumVideoDemo)

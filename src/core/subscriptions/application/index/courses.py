@@ -1,5 +1,5 @@
 """Get Courses."""
-from subscriptions.models.courses.models import Courses
+from subscriptions.models.courses.models import Course
 
 
 def get_courses():
@@ -8,5 +8,5 @@ def get_courses():
     returns:
         courses(list)
     """
-    courses = Courses.objects.all()
+    courses = Course.objects.all()
     return courses

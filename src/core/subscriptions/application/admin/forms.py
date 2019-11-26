@@ -10,7 +10,7 @@ from subscriptions.models.courses.models import Course
 class VideoForm(ModelForm):
     class Meta:
         model = PremiumVideo
-        fields = ["name", "video_file", "course"]
+        fields = ["name", "video_file", "course", "description"]
 
     def clean_name(self):
         regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
@@ -28,6 +28,13 @@ class VideoForm(ModelForm):
             raise ValidationError(u'Unsupported file extension. *{}*'.format(ext))
         else:
             return video
+
+    def clean_description(self):
+        description = self.cleaned_data['description']
+        if not re.match(r'^[_\W]+$', description):
+            return description
+        else:
+            raise ValidationError('Description cannot be special characters only')
 
 
 class DemoVideoForm(ModelForm):

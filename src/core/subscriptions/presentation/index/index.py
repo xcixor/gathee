@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from subscriptions.presentation.auth.forms import LoginForm
+from subscriptions.application.auth.forms import LoginForm
 from subscriptions.application.index.courses import get_courses
 from subscriptions.application.index.demo_videos import get_demo_videos
 

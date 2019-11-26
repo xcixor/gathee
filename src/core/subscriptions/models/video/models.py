@@ -35,6 +35,8 @@ class PremiumVideoDemo(models.Model):
 
     class Meta:
         verbose_name_plural = "Associate A video demo with its Tutorial"
+        unique_together = ('demo_video', 'premium_video')
+
 
     demo_video = models.ForeignKey(DemoVideo, on_delete=models.CASCADE, null=False, blank=False)
     premium_video = models.ForeignKey(PremiumVideo, on_delete=models.CASCADE, null=False, blank=False)

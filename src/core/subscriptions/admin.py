@@ -1,7 +1,7 @@
 from django.contrib import admin
 from subscriptions.models.auth.models import User, CountryCode
 from subscriptions.models.video.models import PremiumVideo, DemoVideo, PremiumVideoDemo
-from subscriptions.presentation.admin.forms import VideoForm, DemoVideoForm, CoursesForm
+from subscriptions.application.admin.forms import VideoForm, DemoVideoForm, CoursesForm
 from subscriptions.models.courses.models import Course
 
 

@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
 from django.contrib import messages
 from django.contrib.auth import login as auth_login
-from .forms import LoginForm
+from subscriptions.application.auth.forms import LoginForm
 
 def login_request(request):
     """Authenticates user credentials and grants account access."""

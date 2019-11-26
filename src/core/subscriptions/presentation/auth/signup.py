@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import UserRegistrationForm
+from subscriptions.application.auth.forms import UserRegistrationForm
 from django.contrib.auth import login as auth_login
 from subscriptions.models.auth.models import CountryCode
 

@@ -1,5 +1,5 @@
 from django.contrib.auth import logout as auth_logout
-from subscriptions.presentation.auth.forms import LoginForm
+from subscriptions.application.auth.forms import LoginForm
 from django.shortcuts import redirect
 from django.contrib import messages
 

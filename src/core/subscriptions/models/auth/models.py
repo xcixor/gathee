@@ -46,6 +46,7 @@ class UserManager(BaseUserManager):
         """
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_superuser', False)
+        extra_fields.setdefault('phone_number', 726173014)
         if not extra_fields.get('country_code'):
             extra_fields.setdefault('country_code', get_default())
         return self._create_user(username, password, **extra_fields)
@@ -56,6 +57,7 @@ class UserManager(BaseUserManager):
         """
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('phone_number', 726173014)
 
         if extra_fields.get('is_staff') is not True:
             raise ValueError('Superuser must have is_staff=True.')
@@ -120,6 +122,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'username'
     # Require the email and password only
     REQUIRED_FIELDS = []
+
 
     def __str__(self):
         """Return a string representaion of the User object."""

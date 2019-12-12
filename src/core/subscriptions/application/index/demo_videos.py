@@ -8,4 +8,3 @@ def get_demo_videos():
     """
     video_list = PremiumVideoDemo.objects.all()
     return video_list
-

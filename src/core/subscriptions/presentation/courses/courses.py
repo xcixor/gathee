@@ -6,6 +6,6 @@ from subscriptions.application.courses.courses import courses
 def courses_view(request):
     """Renders the courses page."""
     context = {
-        'courses': courses()
+        'courses': courses(),
     }
     return render(request, 'courses/courses.html', context)

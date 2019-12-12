@@ -14,7 +14,3 @@ class Tutor(models.Model):
         if self.surname:
             return "{} {} {}".format(self.first_name, self.last_name, self.surname)
         return "{} {}".format(self.first_name, self.last_name)
-
-
-
-

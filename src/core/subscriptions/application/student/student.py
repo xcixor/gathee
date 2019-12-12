@@ -8,3 +8,4 @@ def student_total(course_id):
     """
     total_students = Student.objects.filter(course=course_id).count()
     return total_students
+    

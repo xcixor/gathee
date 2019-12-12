@@ -64,7 +64,7 @@ class CoursesForm(ModelForm):
 
     class Meta:
         model = Course
-        fields = ["title", "description", "course_image"]
+        fields = ["title", "level", "description", "course_image", "price", "tutor"]
 
     def clean_title(self):
         regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')

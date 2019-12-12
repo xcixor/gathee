@@ -4,6 +4,7 @@ from subscriptions.models.video.models import PremiumVideo, DemoVideo, PremiumVi
 from subscriptions.application.admin.forms import VideoForm, DemoVideoForm, CoursesForm
 from subscriptions.models.courses.models import Course
 from subscriptions.models.tutors.models import Tutor
+from subscriptions.models.students.student_models import Student
 
 
 class PremiumVideoAdmin(admin.ModelAdmin):
@@ -25,3 +26,4 @@ admin.site.register(Course, CourseAdmin)
 admin.site.register(DemoVideo, DemoVideoAdmin)
 admin.site.register(PremiumVideoDemo)
 admin.site.register(Tutor)
+admin.site.register(Student)

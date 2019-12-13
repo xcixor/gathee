@@ -2,9 +2,7 @@
 from django.db import models
 from subscriptions.models.courses.models import Course
 from django.utils.translation import gettext_lazy as _
-from django.utils.duration import duration_string
 from django.utils.duration import _get_duration_components
-
 
 
 class Lesson(models.Model):
@@ -38,12 +36,10 @@ class Lesson(models.Model):
         total_duration_in_microseconds = 0
         days, hours, minutes, seconds, microseconds = _get_duration_components(self.duration)
         total_duration_in_microseconds = ((24*days) * 60 * 60 * 1000) + \
-                                         (hours * 60 * 60 * 1000) + \
-                                             (minutes * 60 * 1000) + (seconds * 1000) + \
-                                                 microseconds
+                                        (hours * 60 * 60 * 1000) + \
+                                        (minutes * 60 * 1000) + (seconds * 1000) + \
+                                         microseconds
         return total_duration_in_microseconds
 
     def __str__(self):
         return self.title + ' - ' + str(self.course)
-
-

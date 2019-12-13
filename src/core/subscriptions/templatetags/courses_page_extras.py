@@ -12,4 +12,3 @@ register = template.Library()
 def get_students_total(course_id):
     """Fetch course students total."""
     return student_total(course_id)
-    

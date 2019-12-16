@@ -4,7 +4,8 @@ from subscriptions.presentation.index.index import index
 from subscriptions.presentation.auth.logout import logout_request
 from subscriptions.presentation.auth.account import account_view
 from subscriptions.presentation.auth.signup import signup_view
-from subscriptions.presentation.courses.courses import courses_view, go_to_course, send_course_request
+from subscriptions.presentation.courses.courses import (
+    courses_view, go_to_course, send_course_request)
 
 app_name = 'subscriptions'
 

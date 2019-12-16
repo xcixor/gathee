@@ -35,11 +35,10 @@ def send_course_request(request, course_id):
     user = request.user
     course = get_course(course_id)
     if request.method == 'POST':
-        if save_course_request(user, course) == True:
+        request_status = save_course_request(user, course)
+        if request_status is True:
             return render(request, 'courses/course_purchase_confirmation.html', {'course': course})
-        error = save_course_request(user, course)['error message']
+        error = request_status['error message']
         messages.error(request, error, extra_tags='alert-danger alert-dismissible')
         return redirect('/purchase_course/{}'.format(course_id))
     return render(request, 'courses/course_purchase.html', {'course': course})
-
-

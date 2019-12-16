@@ -18,6 +18,7 @@ def get_course(course_id):
     course = Course.objects.get(id=course_id)
     return course
 
+
 def save_course_request(student, course):
     """
     Args:
@@ -30,4 +31,4 @@ def save_course_request(student, course):
         return True
     except IntegrityError as e:
         # log error
-        return {"error message":"You have aready registered for this course"}
+        return {"error message": "You have aready registered for this course"}

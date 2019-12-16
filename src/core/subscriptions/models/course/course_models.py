@@ -2,7 +2,6 @@
 from django.db import models
 from subscriptions.models.tutors.models import Tutor
 from subscriptions.models.auth.models import User
-from django.contrib.auth.decorators import login_required
 
 
 class Course(models.Model):
@@ -34,4 +33,3 @@ class PendingCourseRequest(models.Model):
 
     def __str__(self):
         return str(self.student) + " : " + str(self.course)
-

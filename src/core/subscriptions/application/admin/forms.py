@@ -4,7 +4,7 @@ import re
 from django.forms import ModelForm, ValidationError
 from django.core.files.images import get_image_dimensions
 from subscriptions.models.video.models import PremiumVideo, DemoVideo
-from subscriptions.models.courses.models import Course
+from subscriptions.models.course.course_models import Course
 
 
 class VideoForm(ModelForm):

@@ -1,6 +1,7 @@
 """Defines the models for Courses."""
 from django.db import models
 from subscriptions.models.tutors.models import Tutor
+from subscriptions.models.auth.models import User
 
 
 class Course(models.Model):
@@ -17,3 +18,18 @@ class Course(models.Model):
         if self.level:
             return "{}: {}".format(self.title, self.level)
         return "{}: {}".format(self.title, "Beginner")
+
+
+class PendingCourseRequest(models.Model):
+    """Contains users pending request to join a course."""
+
+    class Meta:
+        """Additional description."""
+        verbose_name_plural = "View users who have sent request to join courses"
+        unique_together = ('student', 'course')
+
+    student = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, null=False, blank=False)
+
+    def __str__(self):
+        return str(self.student) + " : " + str(self.course)

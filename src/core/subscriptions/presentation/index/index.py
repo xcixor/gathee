@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from subscriptions.application.auth.forms import LoginForm
-from subscriptions.application.index.courses import get_courses
-from subscriptions.application.index.demo_videos import get_demo_videos
+from subscriptions.application.courses.courses import get_courses
+from subscriptions.application.video.demo_videos import get_demo_videos
 
 def index(request):
     """Renders the homepage"""

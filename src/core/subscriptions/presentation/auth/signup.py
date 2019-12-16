@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from subscriptions.application.auth.forms import UserRegistrationForm
 from django.contrib.auth import login as auth_login
-from subscriptions.models.auth.models import CountryCode
+from subscriptions.application.auth.auth_data import get_country_codes
 
 
 def signup_view(request):
@@ -9,7 +9,7 @@ def signup_view(request):
     Renders the signup page and allows the user to create an account
         by providing the required details.
     """
-    codes = CountryCode.objects.all()
+    codes = get_country_codes()
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():

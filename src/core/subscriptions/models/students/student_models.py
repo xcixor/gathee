@@ -1,7 +1,7 @@
 """Contains models associated with students of the academy."""
 from django.db import models
 from subscriptions.models.auth.models import User
-from subscriptions.models.courses.models import Course
+from subscriptions.models.course.course_models import Course
 
 
 class Student(models.Model):

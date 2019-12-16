@@ -1,6 +1,6 @@
 """Contains models associated with a course lesson."""
 from django.db import models
-from subscriptions.models.courses.models import Course
+from subscriptions.models.course.course_models import Course
 from django.utils.translation import gettext_lazy as _
 from django.utils.duration import _get_duration_components
 

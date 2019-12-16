@@ -9,6 +9,10 @@
     float: right;
 }
 
+.ed_course_tabconetent a{
+    color: #167ac6 !important;
+}
+
 @media only screen and (max-width: 667px) {
     .ed_stardiv {
         font-kerning: none;

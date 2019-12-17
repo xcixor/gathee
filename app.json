@@ -23,7 +23,7 @@
     "environments": {
       "test": {
         "scripts": {
-          "predeploy": "./deploy.sh"
+          "postdeploy": "./deploy.sh"
         }
       }
     }

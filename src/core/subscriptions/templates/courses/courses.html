@@ -36,7 +36,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="ed_mostrecomeded_course">
                         <div class="ed_item_img">
-                            <img src="{{ MEDIA_URL }}{{ course.course_image }}" alt="{{ course.title }}" height="230px" width="360px">
+                            <img src="{{ course.course_image.url }}" alt="{{ course.title }}" height="230px" width="360px">
                         </div>
                         <div class="ed_item_description ed_most_recomended_data">
                             <h4><a href="course/{{ course.pk }}">{{ course }} </a><span>Ksh. {{ course.price|intcomma }}</span></h4>

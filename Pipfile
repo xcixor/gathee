@@ -16,6 +16,7 @@ whitenoise = "*"
 psycopg2 = "==2.8.4"
 pillow = "*"
 twilio = "*"
+django-storages = {extras = ["google"],version = "*"}
 
 [requires]
 python_version = "3.7"

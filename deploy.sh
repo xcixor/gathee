@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+sleep 1m
+
 create_service_account() {
     mkdir gs-account
     touch gs-account/account.json

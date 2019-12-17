@@ -6,12 +6,8 @@ import sys
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
-    # if os.path.isfile('account.json'):
-    #     print ("File exist")
-    # else:
-    #     print ("File not exist")
-
-    os.system("bash release.sh")
+    while not os.path.isfile('account.json'):
+        os.system("bash release.sh")
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

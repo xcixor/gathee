@@ -2,6 +2,7 @@
 
 # echo "$GOOGLE_JSON_CREDENTIALS" > src/core/account.json
 echo "${SERVICE_ACCOUNT}" > account.json
+echo "i cant echo file wtf?"
 
 # create_service_account() {
 #     mkdir gs-account

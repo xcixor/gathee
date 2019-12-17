@@ -3,5 +3,6 @@
 *env*
 staticfiles
 src/core/media/
+*account.json*
 .vscode
 *media*

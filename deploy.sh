@@ -2,8 +2,8 @@
 
 create_service_account() {
     ls
-    sudo mkdir gs-account
-    sudo touch gs-account/account.json
+    mkdir gs-account
+    touch gs-account/account.json
     echo "${SERVICE_ACCOUNT}" > gs-account/account.json
     echo "success!"
 }

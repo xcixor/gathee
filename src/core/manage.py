@@ -4,6 +4,12 @@ import os
 import sys
 import subprocess
 
+def create_files_for_heroku():
+    try:
+        with open("gs-account/accounts.json", 'w') as wf:
+            wf.write("Hello")
+    except:
+        print("Error: That file cannot be found!")
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
@@ -20,5 +26,6 @@ def main():
 
 if __name__ == '__main__':
     # for heroku only
-    subprocess.call("./deploy.sh")
+    # subprocess.call("./deploy.sh")
+    create_files_for_heroku()
     main()

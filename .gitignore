@@ -4,5 +4,6 @@
 staticfiles
 src/core/media/
 *account.json*
+*accounts.json*
 .vscode
 *media*

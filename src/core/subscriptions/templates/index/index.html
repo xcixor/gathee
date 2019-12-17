@@ -81,33 +81,6 @@
                 </div><!-- END REVOLUTION SLIDER WRAPPER -->
             </article>
         </section>
-    <!--Slider end-->
-    <!--Slider form start-->
-    <!-- <div class="ed_form_box">
-    <div class="container">
-        <div class="ed_search_form">
-            <form class="form-inline">
-              <div class="form-group">
-                <input type="text" placeholder="Course Name" class="form-control" id="course">
-              </div>
-              <div class="form-group">
-                <input type="text" placeholder="Location" class="form-control" id="location">
-              </div>
-              <div class="form-group">
-                <input type="text" placeholder="Language" class="form-control" id="language">
-              </div>
-              <div class="form-group">
-                <input type="text" placeholder="Type" class="form-control" id="type">
-              </div>
-              <div class="form-group">
-              <div class="ed_dots"><p><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></p></div>
-              <button type="button" class="btn ed_btn pull-right ed_orange">search</button>
-              </div>
-            </form>
-        </div>
-    </div>
-    </div> -->
-    <!--Slider form end-->
     </div>
 
     <!--Our expertise section one start -->
@@ -125,7 +98,7 @@
                             {% for course in courses %}
                             <div class="item">
                                 <div class="ed_item_img">
-                                    <img src="{{ MEDIA_URL }}{{ course.course_image }}" alt="{{ course.title }}" height="165"  width="260">
+                                    <img src="{{ course.course_image.url }}" alt="{{ course.title }}" height="165"  width="260">
                                 </div>
                                 <!-- classes offered -->
                                 <div class="ed_item_description">

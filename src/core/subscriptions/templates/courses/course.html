@@ -38,7 +38,7 @@
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                     <div class="ed_course_single_item">
                         <div class="ed_course_single_image">
-                            <img src="{{ MEDIA_URL }}{{ course.course_image }}" alt="event image" width="806px" height="387px" />
+                            <img src="{{ course.course_image.url }}" alt="event image" width="806px" height="387px" />
                         </div>
                         <div class="ed_course_single_info">
                             <h2>{{ course }} course <span>Ksh. {{ course.price|intcomma }}</span></h2>

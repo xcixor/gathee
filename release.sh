@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#! /bin/bash
 
 # echo "$GOOGLE_JSON_CREDENTIALS" > src/core/account.json
 echo "${SERVICE_ACCOUNT}" > src/core/account.json

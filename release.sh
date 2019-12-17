@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "$GOOGLE_JSON_CREDENTIALS" > src/core/credentials.json
+echo "$GOOGLE_JSON_CREDENTIALS" > src/core/account.json
 
 # create_service_account() {
 #     mkdir gs-account

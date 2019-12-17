@@ -23,6 +23,7 @@
     "environments": {
       "test": {
         "scripts": {
+          "predeploy": "./deploy.sh"
         }
       }
     }

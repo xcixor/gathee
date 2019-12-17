@@ -6,9 +6,6 @@ import subprocess
 
 
 def main():
-    # for heroku only
-    subprocess.call("./deploy.sh")
-
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
     try:
         from django.core.management import execute_from_command_line
@@ -22,4 +19,6 @@ def main():
 
 
 if __name__ == '__main__':
+    # for heroku only
+    subprocess.call("./deploy.sh")
     main()

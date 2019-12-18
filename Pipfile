@@ -9,7 +9,7 @@ coveralls = "*"
 tox = "*"
 
 [packages]
-django = "==2.2.7"
+django = "==2.2.8"
 gunicorn = "*"
 django-heroku = "*"
 whitenoise = "*"

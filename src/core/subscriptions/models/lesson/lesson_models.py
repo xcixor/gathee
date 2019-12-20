@@ -13,7 +13,8 @@ class Lesson(models.Model):
     description = models.CharField(max_length=40, null=False, blank=False, unique=True)
     lesson_image = models.ImageField(null=True, upload_to="images/lessons/")
     lesson_position = models.IntegerField(null=False, blank=False,
-                                        help_text=_("The position of the lesson in the course"))
+                                          help_text=
+                                          _("The position of the lesson in the course"))
     course = models.ForeignKey(
         Course,
         on_delete=models.CASCADE,

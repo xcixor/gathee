@@ -10,6 +10,7 @@ def get_premium_demo_videos():
     video_list = PremiumVideoDemo.objects.all()
     return video_list
 
+
 def get_lesson_demo_video(lesson):
     """
     Fetches the demo videos of a lesson
@@ -20,5 +21,5 @@ def get_lesson_demo_video(lesson):
     returns:
         video(object): the lesson's demo video
     """
-    demo =  LessonVideoDemo.objects.filter(lesson=lesson).first()
+    demo = LessonVideoDemo.objects.filter(lesson=lesson).first()
     return demo

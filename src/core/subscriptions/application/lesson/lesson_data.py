@@ -1,6 +1,7 @@
 """Fetches lesson related data"""
 from subscriptions.models.lesson.lesson_models import Lesson
 
+
 def get_lesson(lesson_id):
     """
     Fetches a lesson
@@ -13,6 +14,7 @@ def get_lesson(lesson_id):
     """
     lesson = Lesson.objects.filter(id=lesson_id).first()
     return lesson
+
 
 def update_lesson(lesson_id, **kwargs):
     """

@@ -1,5 +1,5 @@
 """Presents the lessons of a course"""
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from subscriptions.application.video.demo_videos import get_lesson_demo_video
 from subscriptions.application.lesson.lesson_data import get_lesson, update_lesson
 from subscriptions.application.courses.courses import get_course

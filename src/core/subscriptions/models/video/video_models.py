@@ -60,7 +60,6 @@ class LessonVideo(models.Model):
         verbose_name_plural = "Lesson Video Tutorials"
         unique_together = ('video_file', 'lesson')
 
-
     def __str__(self):
         return self.name
 
@@ -71,7 +70,6 @@ class LessonVideoDemo(models.Model):
     class Meta:
         verbose_name_plural = "Associate A video demo with its Lesson"
         unique_together = ('demo_video', 'lesson')
-
 
     demo_video = models.ForeignKey(DemoVideo, on_delete=models.CASCADE, null=False, blank=False)
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, null=False, blank=False)

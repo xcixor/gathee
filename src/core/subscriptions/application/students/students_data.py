@@ -9,6 +9,7 @@ def student_total(course_id):
     total_students = Student.objects.filter(course=course_id).count()
     return total_students
 
+
 def get_allowed_student(student, course):
     """
     Fetch registered student

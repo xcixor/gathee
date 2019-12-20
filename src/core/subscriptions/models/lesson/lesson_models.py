@@ -9,8 +9,12 @@ class Lesson(models.Model):
     """
     Lesson model.
     """
-    title = models.CharField(max_length=40, null=False, blank=False, unique=True)
+    title = models.CharField(max_length=40, null=False, blank=False)
     description = models.CharField(max_length=40, null=False, blank=False, unique=True)
+    lesson_image = models.ImageField(null=True, upload_to="images/lessons/")
+    lesson_position = models.IntegerField(null=False, blank=False,
+                                          help_text=
+                                          _("The position of the lesson in the course"))
     course = models.ForeignKey(
         Course,
         on_delete=models.CASCADE,
@@ -26,9 +30,16 @@ class Lesson(models.Model):
         help_text=_('[DD (days)] (leave a space between day \
             and hour min sec) [HH:[MM:]]ss[.uuuuuu] format')
         )
+    is_viewed = models.BooleanField(
+        _('viewing status'), default=False,
+        help_text=_(
+            'Designates whether the lesson is currently being viewed.'
+            ),
+        )
 
     class Meta:
         verbose_name_plural = "Add lessons for courses"
+        unique_together = [['course', 'title', 'lesson_position']]
 
 
     def get_duration(self):

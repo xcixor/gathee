@@ -26,6 +26,20 @@
     }
 }
 
+.lesson {
+    background-color: white !important;
+    color: #167ac6;
+}
+
+.lesson:hover{
+    cursor: pointer;
+    background-color: whitesmoke !important;
+}
+
+.lesson span{
+    color: #afafb7 !important;
+}
+
 @media only screen and (max-width: 1024px) and (min-width: 667px) {
     #rating {
         float: none;

@@ -3,7 +3,7 @@ Contains functions for processing information to be displayed
 on the courses page.
 """
 from django import template
-from subscriptions.application.student.student import student_total
+from subscriptions.application.students.students_data import student_total
 
 register = template.Library()
 

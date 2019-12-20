@@ -11,6 +11,13 @@ class Tutor(models.Model):
     tutor_image = models.ImageField(null=True, upload_to="images/courses/")
 
     def __str__(self):
-        if self.surname:
-            return "{} {} {}".format(self.first_name, self.last_name, self.surname)
+        if self.first_name and self.surname:
+            full_name = '%s %s' % (self.first_name, self.surname)
+            return full_name.strip()
+        elif self.first_name and self.last_name:
+            full_name = '%s %s' % (self.first_name, self.last_name)
+            return full_name.strip()
+        elif self.surname and self.last_name:
+            full_name = '%s %s' % (self.last_name, self.surname)
+            return full_name.strip()
         return "{} {}".format(self.first_name, self.last_name)

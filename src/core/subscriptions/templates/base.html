@@ -65,7 +65,7 @@
                                             <button type="submit">login</button>
                                             <a href="/signup" >sign up</a>
                                         </div>
-                                        <input type="hidden" name="next" value="{{ request.GET.next }}"/>
+                                        <input type="hidden" name="next" value="{{ request.get_full_path|urlencode }}"/>
                                     </form>
                                 </div>
                         </div>

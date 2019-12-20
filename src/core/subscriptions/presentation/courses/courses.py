@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from subscriptions.application.courses.courses import (
     get_courses, get_course, save_course_request)
+from subscriptions.application.students.students_data import (
+    get_allowed_student)
 
 
 def courses_view(request):
@@ -19,10 +21,16 @@ def go_to_course(request, course_id):
     Navigates to individual course page
     """
     course = get_course(course_id)
-    lessons = course.lessons.all()
+    lessons = course.lessons.all().order_by('lesson_position')
+    is_allowed = False
+    if request.user.is_authenticated:
+        student = get_allowed_student(request.user, course)
+        if student and student.is_allowed:
+            is_allowed = True
     context = {
         'course': course,
-        'lessons': lessons
+        'lessons': lessons,
+        'is_allowed': is_allowed
         }
     return render(request, 'courses/course.html', context)
 

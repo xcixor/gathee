@@ -1,8 +1,11 @@
 from django.contrib import admin
 from subscriptions.models.auth.models import User, CountryCode
-from subscriptions.models.video.models import PremiumVideo, DemoVideo, PremiumVideoDemo
-from subscriptions.application.admin.forms import VideoForm, DemoVideoForm, CoursesForm
-from subscriptions.models.course.course_models import Course, PendingCourseRequest
+from subscriptions.models.video.video_models import (
+    PremiumVideo, DemoVideo, PremiumVideoDemo, LessonVideoDemo, LessonVideo)
+from subscriptions.application.admin.forms import (
+    VideoForm, DemoVideoForm, CoursesForm)
+from subscriptions.models.course.course_models import (
+    Course, PendingCourseRequest)
 from subscriptions.models.tutors.models import Tutor
 from subscriptions.models.students.student_models import Student
 from subscriptions.models.lesson.lesson_models import Lesson
@@ -31,3 +34,5 @@ admin.site.register(Tutor)
 admin.site.register(Student)
 admin.site.register(Lesson)
 admin.site.register(PendingCourseRequest)
+admin.site.register(LessonVideo)
+admin.site.register(LessonVideoDemo)

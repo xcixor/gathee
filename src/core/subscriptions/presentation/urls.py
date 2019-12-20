@@ -6,6 +6,7 @@ from subscriptions.presentation.auth.account import account_view
 from subscriptions.presentation.auth.signup import signup_view
 from subscriptions.presentation.courses.courses import (
     courses_view, go_to_course, send_course_request)
+from subscriptions.presentation.lessons.lessons import course_lesson
 
 app_name = 'subscriptions'
 
@@ -17,5 +18,6 @@ urlpatterns = [
     path('signup', signup_view, name='signup'),
     path('courses', courses_view, name='courses'),
     path('course/<int:course_id>', go_to_course, name='course'),
-    path('purchase_course/<int:course_id>', send_course_request, name='purchase_course')
+    path('purchase_course/<int:course_id>', send_course_request, name='purchase_course'),
+    path('lesson/<int:lesson_id>', course_lesson, name='lesson')
 ]

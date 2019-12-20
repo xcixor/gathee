@@ -3,7 +3,7 @@ import os
 import re
 from django.forms import ModelForm, ValidationError
 from django.core.files.images import get_image_dimensions
-from subscriptions.models.video.models import PremiumVideo, DemoVideo
+from subscriptions.models.video.video_models import PremiumVideo, DemoVideo
 from subscriptions.models.course.course_models import Course
 
 

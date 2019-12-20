@@ -119,39 +119,20 @@
     <div class="ed_graysection ed_toppadder90 ed_bottompadder90">
         <div class="container">
             <div class="row">
-                <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="skill_section">
-
-                        <div class="ed_video_section">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <div class="ed_video">
-                                    <img src="{% static 'images/placeholder.png' %}" style="cursor:pointer"  alt="1" />
-                                    <div class="ed_img_overlay">
-                                    </div>
-                                </div>
-                                <iframe id="educo_video" class="embed-responsive-item" src="https://www.youtube.com/watch?v=7fr6VjPgCJQ&t=10s" allowfullscreen></iframe>
-                            </div>
-                        </div>
-
-                        <h4>Learn with the best</h4>
-                        <p>At Nyota Music Academy, we live for music. We have excellent teachers and musicians who are dedicated to teaching and passing on their passion
-                            to their students.</p>
-                    </div>
-                </div> -->
                 {% for video in demo_videos %}
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="skill_section">
                         <div class="ed_video_section">
-                                <div class="embed-responsive embed-responsive-16by9">
-                                        <div class="ed_video">
-                                            <div class="videoWrapper">
-                                                    <video width="100%" height="315" controls>
-                                                        <source src='{{ MEDIA_URL }}{{ video }}' type='video/mp4'>
-                                                            Your browser does not support the video tag.
-                                                    </video>
-                                            </div>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <div class="ed_video">
+                                    <div class="videoWrapper">
+                                        <video width="100%" height="315" controls>
+                                            <source src='{{ MEDIA_URL }}{{ video }}' type='video/mp4'>
+                                                Your browser does not support the video tag.
+                                        </video>
                                     </div>
                                 </div>
+                            </div>
                         </div>
                         <h4>{{ video.premium_video.name }}</h4>
                         <p>{{ video.premium_video.description }}</p>
@@ -161,121 +142,6 @@
             </div>
         </div>
     </div>
-
-
-
-    <!--video_section Section three end -->
-    <!-- Most recomended Courses Section four start -->
-
-    <!-- <div class="ed_transprentbg ed_toppadder80 ed_bottompadder80">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="ed_heading_top ed_bottompadder80">
-                        <h3>Most Popular Online Course</h3>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="ed_mostrecomeded_course_slider ed_mostrecomededcourseslider">
-                        <div id="owl-demo3" class="owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="ed_item_img">
-                                    <img src="images/music2.png" alt="item1" class="img-responsive">
-                                </div>
-                                <div class="ed_item_description ed_most_recomended_data">
-                                        <h4><a href="course_single.html">Country Music</a><span>Kes.25,000</span></h4>
-                                        <div class="row">
-                                            <div class="ed_rating">
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                    <div class="row">
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                        </div> -->
-
-                                                        <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="course_detail">
-                                            <div class="course_faculty">
-                                             <a href="instructor_dashboard.html">Gathee Wa Njeri</a>
-                                            </div>
-                                        </div>
-                                        <p>In this Guitar class, our talented musician and teacher will teach you all the great tunes of Kamaru. Right from chords to mastery.</p>
-                                        <a href="course_single.html" class="ed_getinvolved">go to course <i class="fa fa-long-arrow-right"></i></a>
-                                </div>
-                            </div> -->
-                            <!-- <div class="item">
-                                <div class="ed_item_img">
-                                    <img src="images/music.png" alt="item1" class="img-responsive">
-                                </div>
-                                <div class="ed_item_description ed_most_recomended_data">
-                                        <h4><a href="course_single.html">Rhumba</a><span>Kes. 25,000</span></h4>
-                                        <div class="row">
-                                            <div class="ed_rating">
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                    <div class="row">
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="course_detail">
-                                            <div class="course_faculty">
-                                            <a href="instructor_dashboard.html">Gathee wa njeri</a>
-                                            </div>
-                                        </div>
-                                        <p>Do you wish you could play the classics by Franco Luambo Makiadi and all the great Rhumba musicians. In this course, we teach you all about rhumba.</p>
-                                        <a href="course_single.html" class="ed_getinvolved">go to course <i class="fa fa-long-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ed_item_img">
-                                    <img src="images/music3.png" alt="item1" class="img-responsive">
-                                </div> -->
-                                <!-- <div class="ed_item_description ed_most_recomended_data"></div> -->
-                            <!-- </div>
-                            <div class="item">
-                                <div class="ed_item_img">
-                                    <img src="images/music4.png" alt="item1" class="img-responsive">
-                                </div>
-                                <div class="ed_item_description ed_most_recomended_data">
-                                        <h4><a href="course_single.html">Zilizopendwa </a><span>Kes. 15,000</span></h4>
-                                        <div class="row">
-                                            <div class="ed_rating">
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                    <div class="row">
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                        </div> -->
-                                                    <!-- </div>
-                                                </div> -->
-                                                <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div> -->
-                                                <!-- </div>
-                                            </div>
-                                        </div>
-                                        <div class="course_detail">
-                                            <div class="course_faculty">
-                                             <a href="instructor_dashboard.html"> Gathee wa njeri</a>
-                                            </div>
-                                        </div>
-                                        <p>Learn to play songs by Kidum, Nameless, Bongo flava and other east african classics. East African music best school for musicians.</p>
-                                        <a href="course_single.html" class="ed_getinvolved">go to course <i class="fa fa-long-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
     </div>
     <!--Page main section end-->
 

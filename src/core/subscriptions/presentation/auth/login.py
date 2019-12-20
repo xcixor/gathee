@@ -5,14 +5,14 @@ from django.contrib import messages
 from django.contrib.auth import login as auth_login
 from subscriptions.application.auth.forms import LoginForm
 from subscriptions.application.courses.courses import get_courses
-from subscriptions.application.video.demo_videos import get_demo_videos
+from subscriptions.application.video.demo_videos import get_premium_demo_videos
 
 
 def login_request(request):
     """Authenticates user credentials and grants account access."""
     login_form = LoginForm()
     courses = get_courses()
-    demo_videos = get_demo_videos()
+    demo_videos = get_premium_demo_videos()
     context = {'form': login_form, 'courses': courses, 'demo_videos': demo_videos}
     if request.method == 'POST':
         form = LoginForm(request.POST)

@@ -126,7 +126,13 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         """Return a string representaion of the User object."""
-        if self.firstname and self.lastname:
+        if self.firstname and self.surname:
+            full_name = '%s %s' % (self.firstname, self.surname)
+            return full_name.strip()
+        elif self.firstname and self.lastname:
             full_name = '%s %s' % (self.firstname, self.lastname)
+            return full_name.strip()
+        elif self.surname and self.lastname:
+            full_name = '%s %s' % (self.lastname, self.surname)
             return full_name.strip()
         return self.username

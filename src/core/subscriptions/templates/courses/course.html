@@ -35,7 +35,11 @@
     <div class="ed_graysection ed_course_single ed_toppadder80 ed_bottompadder80">
         <div class="container">
             <div class="row">
+                {% if is_allowed == True %}
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                {% else %}
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                {% endif %}
                     <div class="ed_course_single_item">
                         <div class="ed_course_single_image">
                             <img src="{{ course.course_image.url }}" alt="event image" width="806px" height="387px" />
@@ -164,99 +168,51 @@
                         <ul>
                             <li><a href="#!">lessons</a> <span>estimated time</span></li>
                             {% for lesson in lessons %}
-                            <li><a href="course_lesson.html">{{ lesson.title }}</a> <span>{{ lesson.duration }}</span></li>
+                                {% if is_allowed == True %}
+                                <a href="/lesson/{{ lesson.pk }}">
+                                    <li class="lesson">
+                                    {{ lesson.title }}
+                                    <span>{{ lesson.duration }}</span>
+                                    </li>
+                                </a>
+                                {% else %}
+                                <li><a href="#!">{{ lesson.title }}</a>
+                                    <span><i class="fas fa-lock"></i></span>
+                                </li>
+                                {% endif %}
                             {% endfor %}
+                        </ul>
                         </ul>
                     </div>
                 </div>
     <!--Sidebar Start-->
+                {% if is_allowed == True %}
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="sidebar_wrapper_upper">
+                        <div class="sidebar_wrapper">
+                            <aside class="widget widget_button">
+                                {% if course.pk|get_course_first_lesson_id != None %}
+                                    <a href="/lesson/{{ course.pk|get_course_first_lesson_id }}" class="ed_btn ed_green">Start Learning</a>
+                                {% else %}
+                                <a href="#!" class="ed_btn ed_green">Start Learning</a>
+                                {% endif %}
+                            </aside>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="sidebar_wrapper_upper">
                         <div class="sidebar_wrapper">
                             <aside class="widget widget_button">
                                 <a href="/purchase_course/{{ course.pk }}" class="ed_btn ed_green">Join this course</a>
                             </aside>
-                            <!-- <aside class="widget widget_categories">
-                                <h4 class="widget-title">related courses</h4>
-                                <ul>
-                                    <li><a href="course_single.html"><i class="fa fa-chevron-right"></i> Management Prog.</a></li>
-                                    <li><a href="course_single.html"><i class="fa fa-chevron-right"></i> ethical heaking</a></li>
-                                    <li><a href="course_single.html"><i class="fa fa-chevron-right"></i> Mobile Capabilities</a></li>
-                                    <li><a href="course_single.html"><i class="fa fa-chevron-right"></i> Javascript Campus</a></li>
-                                    <li><a href="course_single.html"><i class="fa fa-chevron-right"></i> Coding Seminar</a></li>
-                                    <li><a href="course_single.html"><i class="fa fa-chevron-right"></i> html css</a></li>
-                                    <li><a href="course_single.html"><i class="fa fa-chevron-right"></i> it skills</a></li>
-
-                                </ul>
-                            </aside> -->
-                            <!-- <aside class="widget widget_sharing">
-                                <h4 class="widget-title">share this course</h4>
-                                <ul>
-                                    <li><a href="course_single.html"><i class="fa fa-facebook"></i> facebook</a></li>
-                                    <li><a href="course_single.html"><i class="fa fa-linkedin"></i> linkedin</a></li>
-                                    <li><a href="course_single.html"><i class="fa fa-twitter"></i> twitter</a></li>
-                                    <li><a href="course_single.html"><i class="fa fa-google-plus"></i> google+</a></li>
-                                </ul> -->
                             </aside>
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="ed_sidebar_slider ed_bottompadder10">
-                        <h3>popular courses</h3>
-                        <div id="owl-demo3" class="owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="ed_item_img">
-                                    <img src="http://placehold.it/263X166" alt="item1" class="img-responsive">
-                                </div>
-                                <div class="ed_mostrecomeded_course_slider ed_most_recomended_data">
-                                    <h4><a href="course_single.html">Project Learning </a><span>£25</span></h4>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ed_item_img">
-                                <img src="http://placehold.it/263X166" alt="item2" class="img-responsive">
-                                </div>
-                                <div class="ed_mostrecomeded_course_slider ed_most_recomended_data">
-                                    <h4><a href="course_single.html">billing seminar</a><span>free</span></h4>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ed_item_img">
-                                <img src="http://placehold.it/263X166" alt="item3" class="img-responsive">
-                                </div>
-                                <div class="ed_mostrecomeded_course_slider ed_most_recomended_data">
-                                    <h4><a href="course_single.html">User experience Jam </a><span>£38</span></h4>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ed_item_img">
-                                <img src="http://placehold.it/263X166" alt="item4" class="img-responsive">
-                                </div>
-                                <div class="ed_mostrecomeded_course_slider ed_most_recomended_data">
-                                    <h4><a href="course_single.html">Girls on Rails </a><span>free</span></h4>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ed_item_img">
-                                    <img src="http://placehold.it/263X166" alt="item1" class="img-responsive">
-                                </div>
-                                <div class="ed_mostrecomeded_course_slider ed_most_recomended_data">
-                                    <h4><a href="course_single.html">Coding Seminar </a><span>free</span></h4>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ed_item_img">
-                                <img src="http://placehold.it/263X166" alt="item2" class="img-responsive">
-                                </div>
-                                <div class="ed_mostrecomeded_course_slider ed_most_recomended_data">
-                                    <h4><a href="course_single.html">Javascript Campus </a><span>£60</span></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-    <!--Sidebar End-->
+                {% endif %}
             </div>
         </div>
     </div>

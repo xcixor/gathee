@@ -25,3 +25,22 @@ def get_course_duration(course_id):
     days = (total_course_microseconds/(1000*60*60*24))
     days = int(days)
     return "{} days {} hrs {} mins {} seconds".format(days, hours, minutes, seconds)
+
+
+@register.filter
+def get_course_first_lesson_id(course_id):
+    """
+    Get course first lesson
+
+    Args:
+        course_id(str): course id
+    Returns:
+        lesson_id(int):first lesson id
+    """
+    course = get_course(course_id)
+    lessons = course.lessons.all().order_by('lesson_position')
+    if lessons:
+        lesson = lessons.first()
+        lesson_id = lesson.pk
+        return lesson_id
+    return None

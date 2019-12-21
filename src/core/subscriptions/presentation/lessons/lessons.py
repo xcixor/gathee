@@ -17,6 +17,7 @@ def course_lesson(request, lesson_id):
         return render(request, 'lessons/course_lesson.html', context)
     return redirect('/course/{}'.format(context['lesson'].course.pk))
 
+
 def fetch_lesson_data(request, lesson_id):
     """
     Fetch lesson data

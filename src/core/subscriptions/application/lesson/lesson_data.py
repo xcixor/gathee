@@ -1,7 +1,7 @@
 """Fetches lesson related data"""
 from subscriptions.models.lesson.lesson_models import Lesson, ViewedLesson
-from subscriptions.models.course.course_models import Course
 from subscriptions.models.students.student_models import Student
+
 
 def get_lesson(lesson_id):
     """
@@ -34,6 +34,7 @@ def update_viewed_lessons(lesson, student):
     ViewedLesson.objects.update_or_create(
         lesson=lesson, student=student, is_viewed=True
         )
+
 
 def get_next_lesson(student, lesson, course):
     """

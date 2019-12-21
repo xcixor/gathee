@@ -50,6 +50,7 @@ class Lesson(models.Model):
     def __str__(self):
         return self.title + ' - ' + str(self.course)
 
+
 class ViewedLesson(models.Model):
     """
     Records viewed lessons for a student/user

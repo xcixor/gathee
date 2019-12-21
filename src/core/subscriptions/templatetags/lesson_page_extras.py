@@ -5,7 +5,9 @@ on the lessons page
 from django import template
 from subscriptions.models.lesson.lesson_models import ViewedLesson
 
+
 register = template.Library()
+
 
 @register.filter
 def check_viewed(lesson, student):

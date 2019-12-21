@@ -61,7 +61,7 @@ class LessonVideo(models.Model):
         unique_together = ('video_file', 'lesson')
 
     def __str__(self):
-        return self.name
+        return str(self.video_file)
 
 
 class LessonVideoDemo(models.Model):

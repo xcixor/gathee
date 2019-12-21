@@ -51,7 +51,7 @@ def get_next_lesson(student, lesson, course):
     if not Student.objects.filter(student=student).exists():
         return False
     position = lesson.lesson_position + 1
-    if not Lesson.objects.filter(lesson_position=position, course=course):
+    if not Lesson.objects.filter(lesson_position=position, course=course).exists():
         return False
     next_lesson = Lesson.objects.filter(lesson_position=position, course=course).first()
     return next_lesson

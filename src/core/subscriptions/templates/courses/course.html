@@ -35,7 +35,7 @@
     <div class="ed_graysection ed_course_single ed_toppadder80 ed_bottompadder80">
         <div class="container">
             <div class="row">
-                {% if is_allowed == True %}
+                {% if request.user.is_authenticated and is_allowed == True %}
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                 {% else %}
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
@@ -186,7 +186,7 @@
                     </div>
                 </div>
     <!--Sidebar Start-->
-                {% if is_allowed == True %}
+                {% if request.user.is_authenticated and is_allowed == True %}
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="sidebar_wrapper_upper">
                         <div class="sidebar_wrapper">

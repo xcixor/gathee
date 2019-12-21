@@ -8,7 +8,7 @@ from subscriptions.models.course.course_models import (
     Course, PendingCourseRequest)
 from subscriptions.models.tutors.models import Tutor
 from subscriptions.models.students.student_models import Student
-from subscriptions.models.lesson.lesson_models import Lesson
+from subscriptions.models.lesson.lesson_models import Lesson, ViewedLesson
 
 
 class PremiumVideoAdmin(admin.ModelAdmin):

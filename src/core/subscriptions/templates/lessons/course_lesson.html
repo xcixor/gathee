@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+{% load lesson_page_extras %}
 <!--Breadcrumb start-->
 <div class="ed_pagetitle" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="0" style="background-image: url(http://placehold.it/921X533);">
 <div class="ed_img_overlay"></div>
@@ -58,20 +59,26 @@
                     </div>
                 <div class="ed_course_single_info">
                     <h2 class="ed_toppadder20">{{ lesson.title }}</h2>
-
                     <button type="button" class="btn ed_btn pull-left ed_orange">preview lesson</button>
-                    <button type="button" class="btn ed_btn pull-right ed_orange">next lesson</button>
-
+                    {% if next %}
+                    <a href="/lesson/{{ next.pk }}">
+                        <button type="button" class="btn ed_btn pull-right ed_orange">next lesson</button>
+                    </a>
+                    {% else %}
+                    <a href="/lesson/{{ lesson.pk }}">
+                        <button type="button" class="btn ed_btn pull-right ed_orange">next lesson</button>
+                    </a>
+                    {% endif %}
                 </div>
                 </div>
                 <div class="ed_time_executor ed_toppadder40">
                     <ul>
                         <li><a href="course_lesson.html">lessons</a> <span>estimated time</span></li>
-                        {% if is_allowed == True %}
+                        {% if request.user.is_authenticated and is_allowed == True %}
                             {% for other_lesson in other_lessons %}
                                 {% if other_lesson.id == lesson.id %}
                                 <li><a href="/lesson/{{ other_lesson.pk }}">{{ lesson.title }}</a> <span>Currently Active</span></li>
-                                {% elif other_lesson.is_viewed == True %}
+                                {% elif other_lesson|check_viewed:request.user == True %}
                                 <li><a href="/lesson/{{ other_lesson.pk }}">{{ other_lesson.title }}</a>
                                     <span><i class="fas fa-check-circle"></i></span>
                                 </li>
@@ -98,7 +105,6 @@
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="sidebar_wrapper_upper">
                 <div class="sidebar_wrapper">
-
                     <aside class="widget widget_progress_bar">
                         <h4 class="widget-title">lessons status</h4>
                         <div class="progress">

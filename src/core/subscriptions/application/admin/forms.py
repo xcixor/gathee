@@ -91,7 +91,14 @@ class AddressForm(ModelForm):
 
     class Meta:
         model = Address
-        fields = ["address_line_one", "address_line_two", "short_description", "email", "phone_number", "website"]
+        fields = [
+            "address_line_one",
+            "address_line_two",
+            "short_description",
+            "email",
+            "phone_number",
+            "website"
+            ]
 
     def clean_phone_number(self):
         """

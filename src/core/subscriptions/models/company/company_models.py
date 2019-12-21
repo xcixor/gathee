@@ -20,7 +20,7 @@ class Address(models.Model):
     email = models.EmailField(_('email address'), max_length=255)
     phone_number = models.IntegerField(blank=False, null=False)
     website = models.CharField(max_length=255, null=False,
-                                        blank=False)
+                               blank=False)
 
     def __str__(self):
         if self.address_line_two:

@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+{{ block.super }}
+<link href="{% static 'css/courses/courses.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block content %}
+<!--Breadcrumb start-->
+<div class="ed_pagetitle" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="0" style="background-image: url(http://placehold.it/921X533);">
+    <div class="ed_img_overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-4 col-sm-6">
+                    <div class="page_title">
+                        <h2>About Nyota Music Academy</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Breadcrumb end-->
+    <!--chart section start -->
+    <div class="ed_graysection ed_toppadder90 ed_bottompadder90">
+        <div class="container">
+            <div class="row">
+                <div class="ed_counter_wrapper">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="ed_chart_ratio">
+                            <i class="fa fa-line-chart"></i>
+                            <h4>The best local music school</h4>
+                            <p>Our expert musicians have mastered the ins and out of east african music. They teach with passion and are always learning together with their students.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="ed_chart_ratio">
+                            <i class="fa fa-sliders"></i>
+                            <h4>Online learning</h4>
+                            <p>We operate online as well as in-person classes. Wherever you are in the world, we can help you learn and play music from Kenya</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="ed_chart_ratio">
+                            <i class="fas fa-folder-open"></i>
+                            <h4>Contact</h4>
+                            <p>We are quick to reply to emails or whatsapp call. Give us a call or email and we can help you with your music goals.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- chart Section end -->
+    <!-- team member section start -->
+    <div class="ed_transprentbg ed_toppadder80 ed_bottompadder80">
+        <div class="container">
+            {% for tutor in tutors %}
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                    <div class="ed_team_member">
+                        <div class="ed_team_member_img">
+                            <img src="{{ tutor.tutor_image.url }}" alt="{{ tutor }}" height="200px" width="255px">
+                        </div>
+                        <div class="ed_team_member_description">
+                            <h4><a href="instructor_dashboard.html">Gathee Wa Njeri</a></h4>
+                            <h5>{{ tutor.contact }}</h5>
+                            {% if tutor.role %}
+                            <p>{{ tutor.role }}</p>
+                            {% else %}
+                            <p>Teacher and Musician</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div><!-- /.container -->
+    </div>
+    <!-- team member section end -->
+    <!--counter section start -->
+    <div class="ed_graysection ed_toppadder90 ed_bottompadder90">
+        <div class="container">
+            <div class="ed_counter_wrapper">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="ed_counter">
+                    <h2 class="timer" data-from="0" data-to="{{ students_total }}" data-speed="3000"></h2>
+                    <h4>Students graduated</h4>
+                    <p>The number of student that have graduated from Nyota Music Academys..</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="ed_counter">
+                    <h2 class="timer" data-from="0" data-to="30" data-speed="3000"></h2>
+                    <h4>Countries represented</h4>
+                    <p>This is the number of people in our classes from all over the world...</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="ed_counter">
+                    <h2 class="timer" data-from="0" data-to="400" data-speed="3000"></h2>
+                    <h4>Concerts Performed</h4>
+                    <p>The number of concerts or musician teachers have performed at...</p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

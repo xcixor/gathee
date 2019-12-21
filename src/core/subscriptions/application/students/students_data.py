@@ -31,3 +31,8 @@ def students_total():
     """
     total_students = Student.objects.all().count()
     return total_students
+
+
+def get_user_courses(user):
+    """Returns a list of user courses."""
+    return Student.objects.filter(student=user)

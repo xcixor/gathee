@@ -9,6 +9,7 @@ from subscriptions.presentation.courses.courses import (
 from subscriptions.presentation.lessons.lessons import course_lesson
 from subscriptions.presentation.about.about_page import about_page
 from subscriptions.presentation.contact.contact_page import contact
+from subscriptions.presentation.student.student import user_courses
 
 
 app_name = 'subscriptions'
@@ -24,5 +25,6 @@ urlpatterns = [
     path('purchase_course/<int:course_id>', send_course_request, name='purchase_course'),
     path('lesson/<int:lesson_id>', course_lesson, name='lesson'),
     path('about', about_page, name='about'),
-    path('contact', contact, name='contact')
+    path('contact', contact, name='contact'),
+    path('user_courses', user_courses, name='user_courses')
 ]

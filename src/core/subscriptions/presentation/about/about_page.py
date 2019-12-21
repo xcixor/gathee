@@ -5,10 +5,8 @@ from subscriptions.application.students.students_data import students_total
 
 
 def about_page(request):
-    tutors = get_tutors()
-    students = students_total()
     context = {
-        'tutors': tutors,
+        'tutors': get_tutors,
         'students_total': students_total
     }
     return render(request, 'about/about.html', context)

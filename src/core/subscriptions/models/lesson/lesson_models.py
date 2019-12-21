@@ -1,8 +1,9 @@
 """Contains models associated with a course lesson."""
 from django.db import models
-from subscriptions.models.course.course_models import Course
 from django.utils.translation import gettext_lazy as _
 from django.utils.duration import _get_duration_components
+from subscriptions.models.course.course_models import Course
+from subscriptions.models.auth.models import User
 
 
 class Lesson(models.Model):
@@ -30,12 +31,6 @@ class Lesson(models.Model):
         help_text=_('[DD (days)] (leave a space between day \
             and hour min sec) [HH:[MM:]]ss[.uuuuuu] format')
         )
-    is_viewed = models.BooleanField(
-        _('viewing status'), default=False,
-        help_text=_(
-            'Designates whether the lesson is currently being viewed.'
-            ),
-        )
 
     class Meta:
         verbose_name_plural = "Add lessons for courses"
@@ -54,3 +49,30 @@ class Lesson(models.Model):
 
     def __str__(self):
         return self.title + ' - ' + str(self.course)
+
+
+class ViewedLesson(models.Model):
+    """
+    Records viewed lessons for a student/user
+    """
+    lesson = models.ForeignKey(
+        Lesson,
+        on_delete=models.CASCADE,
+        null=False,
+        blank=False
+        )
+    student = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        null=False,
+        blank=False
+        )
+    is_viewed = models.BooleanField(
+        _('viewing status'), default=False,
+        help_text=_(
+            'Designates whether the lesson is currently being viewed.'
+            ),
+        )
+
+    class Meta:
+        unique_together = ('lesson', 'student')

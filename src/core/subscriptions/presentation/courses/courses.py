@@ -6,12 +6,14 @@ from subscriptions.application.courses.courses import (
     get_courses, get_course, save_course_request)
 from subscriptions.application.students.students_data import (
     get_allowed_student)
+from subscriptions.application.contact.contact import get_address_info
 
 
 def courses_view(request):
     """Renders the courses page."""
     context = {
-        'courses': get_courses(),
+        'courses': get_courses,
+        'address': get_address_info
     }
     return render(request, 'courses/courses.html', context)
 

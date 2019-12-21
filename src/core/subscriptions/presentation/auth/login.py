@@ -6,6 +6,7 @@ from django.contrib.auth import login as auth_login
 from subscriptions.application.auth.forms import LoginForm
 from subscriptions.application.courses.courses import get_courses
 from subscriptions.application.video.demo_videos import get_premium_demo_videos
+from subscriptions.application.contact.contact import get_address_info
 
 
 def login_request(request):
@@ -13,7 +14,12 @@ def login_request(request):
     login_form = LoginForm()
     courses = get_courses()
     demo_videos = get_premium_demo_videos()
-    context = {'form': login_form, 'courses': courses, 'demo_videos': demo_videos}
+    context = {
+        'form': login_form,
+        'courses': courses,
+        'demo_videos': demo_videos,
+        'address': get_address_info
+        }
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():

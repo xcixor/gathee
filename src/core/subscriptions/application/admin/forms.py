@@ -5,6 +5,9 @@ from django.forms import ModelForm, ValidationError
 from django.core.files.images import get_image_dimensions
 from subscriptions.models.video.video_models import PremiumVideo, DemoVideo
 from subscriptions.models.course.course_models import Course
+from subscriptions.models.company.company_models import Address
+from subscriptions.utils.twilio import TwilioValidation
+from subscriptions.models.auth.models import get_default
 
 
 class VideoForm(ModelForm):
@@ -82,3 +85,18 @@ class CoursesForm(ModelForm):
                 raise ValidationError("The image cannot be less than 260px wide and 165px high")
             else:
                 return course_image
+
+
+class AddressForm(ModelForm):
+
+    class Meta:
+        model = Address
+        fields = ["address_line_one", "address_line_two", "short_description", "email", "phone_number", "website"]
+
+    def clean_phone_number(self):
+        """
+        Validate phone number entered by the user.
+        """
+        cleaned_data = self.cleaned_data
+        phone_number = cleaned_data["phone_number"]
+        return TwilioValidation().phone_validation(get_default(), phone_number)

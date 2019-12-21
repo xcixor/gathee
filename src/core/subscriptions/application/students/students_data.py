@@ -2,7 +2,7 @@
 from subscriptions.models.students.student_models import Student
 
 
-def student_total(course_id):
+def course_student_total(course_id):
     """
     Returns the total number of students for a course.
     """
@@ -23,3 +23,11 @@ def get_allowed_student(student, course):
     """
     student = Student.objects.filter(student=student, course=course).first()
     return student
+
+
+def students_total():
+    """
+    Returns the total number of students in all courses
+    """
+    total_students = Student.objects.all().count()
+    return total_students

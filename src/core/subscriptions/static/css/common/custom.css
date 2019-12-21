@@ -5,3 +5,7 @@
 .alert {
     margin-bottom: 0 !important;
 }
+
+.widget p {
+    margin-bottom: 0;
+}

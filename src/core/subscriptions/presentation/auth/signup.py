@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from subscriptions.application.auth.forms import UserRegistrationForm
 from django.contrib.auth import login as auth_login
 from subscriptions.application.auth.auth_data import get_country_codes
+from subscriptions.application.contact.contact import get_address_info
 
 
 def signup_view(request):
@@ -18,7 +19,12 @@ def signup_view(request):
             auth_login(request, user)
             return redirect('/account')
         else:
-            return render(request, 'auth/signup.html', {'form': form, 'codes': codes})
+            return render(request, 'auth/signup.html', {
+                'form': form, 'codes': codes, 'address': get_address_info})
     registration_form = UserRegistrationForm()
-    context = {'form': registration_form, 'codes': codes}
+    context = {
+        'form': registration_form,
+        'codes': codes,
+        'address': get_address_info
+        }
     return render(request, 'auth/signup.html', context)

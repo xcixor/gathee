@@ -7,6 +7,7 @@ from subscriptions.application.lesson.lesson_data import (
     get_lesson, update_viewed_lessons, get_next_lesson)
 from subscriptions.application.courses.courses import get_course
 from subscriptions.application.students.students_data import get_allowed_student
+from subscriptions.application.contact.contact import get_address_info
 
 
 @login_required
@@ -46,6 +47,7 @@ def fetch_lesson_data(request, lesson_id):
         'other_lessons': lessons,
         'is_allowed': is_allowed,
         'next': next_lesson,
-        'video': video
+        'video': video,
+        'address': get_address_info
         }
     return context

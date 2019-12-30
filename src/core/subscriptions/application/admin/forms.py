@@ -7,6 +7,7 @@ from subscriptions.models.video.video_models import PremiumVideo, DemoVideo
 from subscriptions.models.course.course_models import Course
 from subscriptions.models.company.company_models import Address
 from subscriptions.utils.twilio import TwilioValidation
+from subscriptions.utils.validations import clean_value
 from subscriptions.models.auth.models import get_default
 
 
@@ -46,12 +47,8 @@ class DemoVideoForm(ModelForm):
         fields = ["name", "video_file"]
 
     def clean_name(self):
-        regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
         name = self.cleaned_data['name']
-        if (regex.search(name) == None):
-            return name
-        else:
-            raise ValidationError("Video name cannot contain special characters such as @# or !")
+        return clean_value(name, "Name")
 
     def clean_video_file(self):
         video = self.cleaned_data['video_file']
@@ -70,12 +67,8 @@ class CoursesForm(ModelForm):
         fields = ["title", "level", "description", "course_image", "price", "tutor"]
 
     def clean_title(self):
-        regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
         title = self.cleaned_data['title']
-        if (regex.search(title) == None):
-            return title
-        else:
-            raise ValidationError("Video name cannot contain special characters such as @# or !")
+        return clean_value(title, "Title")
 
     def clean_course_image(self):
         course_image = self.cleaned_data['course_image']

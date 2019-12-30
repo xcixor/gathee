@@ -31,31 +31,62 @@
     <div class="ed_transprentbg ed_toppadder80 ed_bottompadder80">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="ed_heading_top">
-                        <h3>Send us a message</h3>
+                <form action="/contact" method="POST">
+                    {% csrf_token %}
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="ed_heading_top">
+                            <h3>Send us a message</h3>
+                        </div>
                     </div>
-                </div>
-                <div class="ed_contact_form ed_toppadder60">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="form-group">
-                        <input type="text" id="uname" class="form-control"  placeholder="Your Name">
+                    <div class="ed_contact_form ed_toppadder60">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <input type="text" id="uname" name="name" class="form-control"  placeholder="Your Name" required>
+                            {% if form.name.errors %}
+                                {% for error in form.name.errors %}
+                                    <div class="error">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="umail" name="email" class="form-control"  placeholder="Your Email" required>
+                            {% if form.email.errors %}
+                                {% for error in form.email.errors %}
+                                    <div class="error">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="sub" name="subject" class="form-control"  placeholder="Subject" required>
+                            {% if form.subject.errors %}
+                                {% for error in form.subject.errors %}
+                                    <div class="error">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <textarea id="msg" name="message" class="form-control" rows="6" placeholder="Message" required></textarea>
+                            {% if form.message.errors %}
+                                {% for error in form.message.errors %}
+                                    <div class="error">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <button id="ed_submit" class="btn ed_btn ed_orange pull-right">send</button>
+                        <p id="err"></p>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="email" id="umail" class="form-control"  placeholder="Your Email">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="sub" class="form-control"  placeholder="Subject">
-                    </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="form-group">
-                        <textarea id="msg" class="form-control" rows="6" placeholder="Message"></textarea>
-                    </div>
-                    <button id="ed_submit" class="btn ed_btn ed_orange pull-right">send</button>
-                    <p id="err"></p>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

@@ -9,3 +9,7 @@
 .widget p {
     margin-bottom: 0;
 }
+
+.error{
+    color: red;
+}

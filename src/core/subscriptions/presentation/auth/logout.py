@@ -20,6 +20,6 @@ def logout_request(request):
         }
     if request.user:
         auth_logout(request)
-        error_message = "Successfuly logged out!"
-        messages.error(request, error_message, extra_tags='alert-success alert-dismissible')
+        message = "Successfuly logged out!"
+        messages.error(request, message, extra_tags='alert-success alert-dismissible')
         return redirect('/', context)

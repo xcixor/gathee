@@ -33,7 +33,7 @@ get_required_variables () {
 }
 
 start_app () {
-    cd ~/pelly-realtors-website/src/core/
+    cd ~/gathee/src/core/
     gunicorn -b 0.0.0.0:8000 --error-logfile /var/log/gathee-error.log core.wsgi
 }
 

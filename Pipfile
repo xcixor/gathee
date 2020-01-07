@@ -14,11 +14,11 @@ flake8 = "*"
 django = "==2.2.8"
 gunicorn = "*"
 django-heroku = "*"
-whitenoise = "*"
 psycopg2 = "==2.8.4"
 pillow = "*"
 twilio = "*"
 django-storages = {extras = ["google"],version = "*"}
+django-forgiving-collectstatic = "*"
 
 [requires]
 python_version = "3.7"

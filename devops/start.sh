@@ -30,8 +30,8 @@ get_required_variables () {
     export EMAIL_HOST="$(get_var "email_host")"
     export EMAIL_HOST_USER="$(get_var "email_host_user")"
     export EMAIL_HOST_PASSWORD="$(get_var "email_host_password")"
-    export SERVICE_ACCOUNT="$(get_var "service_account")"
-    export GOOGLE_APPLICATION_CREDENTIALS="~/gs-account/account.json"
+    export SERVICE_ACCOUNT="$(get_var "gs_credentials")"
+    export GOOGLE_APPLICATION_CREDENTIALS="/usr/local/gs-account/account.json"
 }
 
 start_app () {

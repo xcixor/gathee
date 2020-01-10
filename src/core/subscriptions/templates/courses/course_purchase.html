@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+{{ block.super }}
+<link href="{% static 'css/courses/courses.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block content %}
+{% load humanize %}
+<!--Breadcrumb start-->
+<div class="ed_pagetitle" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="0" style="background-image: url(http://placehold.it/921X533);">
+    <div class="ed_img_overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-4 col-sm-6">
+                <div class="page_title">
+                    <h2>Purchase Course</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-8 col-sm-6">
+                <ul class="breadcrumb">
+                    <li><a href="/">home</a></li>
+                    <li><i class="fa fa-chevron-left"></i></li>
+                    <li><a href="/course/{{ course.pk }}">single course</a></li>
+                    <li><i class="fa fa-chevron-left"></i></li>
+                    <li><a href="/purchase_course/{{ course.pk }}">Purchase Course</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Breadcrumb end-->
+<!--Single content start-->
+<div class="ed_graysection ed_purchase_course ed_toppadder80 ed_bottompadder80 course_purchase_wrapper">
+<div class="container">
+    <div class="row">
+
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <div class="ed_course_single_item">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <div class="ed_course_single_image">
+                            <img src="{{ course.course_image.url }}" alt="event image" height="155px" width="320px"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-12">
+                        <div class="ed_course_single_info">
+                            <h2>{{ course }}</h2>
+                            <div class="ed_abbcart">
+                            <!-- <a href="#" class="btn ed_btn ed_green">add to cart</a> -->
+                            <h3 class="price">Kes. {{ course.price|intcomma }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="ed_course_single_tab ed_toppadder40">
+                            <div role="tabpanel">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">description</a></li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="description">
+                                        <div class="ed_course_tabconetent">
+                                        <h2>about course</h2>
+                                        <p>{{ course.description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--tab End-->
+                    </div>
+                </div>
+			</div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <div class="sidebar_wrapper_upper">
+                <div class="sidebar_wrapper">
+                    <aside class="widget widget_cart">
+                        <div class="course_single_item">
+                            <div class="course_single_info">
+                                <div class="purchase_title">
+                                <img src="http://placehold.it/80X38" alt="event image" /><a href="#" data-toggle="tooltip" data-placement="bottom" title="Remove Item">x</a>
+                                <h5>{{ course.title }}</h5>
+                                <p class="quantity">1 X <span>{{ course.price }}</span></p>
+                                </div>
+                                <p class="total">Subtotal: <span>{{ course.price }}</span></p>
+                                <div class="button_cart">
+                                    <form action="/purchase_course/{{ course.pk }}" method="POST">
+                                        {% csrf_token %}
+                                        <button class="btn ed_btn ed_orange pull-right" type="submit">Confirm</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+<!--Sidebar End-->
+
+    </div>
+</div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+.ed_stardiv {
+    padding: 0;
+}
+.ed_stardiv .fas{
+    color: #167ac6;
+}
+
+#rating{
+    float: right;
+}
+
+.ed_course_tabconetent a{
+    color: #167ac6 !important;
+}
+
+@media only screen and (max-width: 667px) {
+    .ed_stardiv {
+        font-kerning: none;
+    }
+    .ed_stardiv .fas{
+       font-size: x-small;
+       margin-right: 0;
+    }
+    #rating {
+        float: none;
+    }
+}
+
+.lesson {
+    background-color: white !important;
+    color: #167ac6;
+}
+
+.lesson:hover{
+    cursor: pointer;
+    background-color: whitesmoke !important;
+}
+
+.lesson span{
+    color: #afafb7 !important;
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 667px) {
+    #rating {
+        float: none;
+    }
+}

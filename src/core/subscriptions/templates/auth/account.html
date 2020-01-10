@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+{{ block.super }}
+<link href="{% static 'css/index/index.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block content %}
+<!--Breadcrumb start-->
+<div class="ed_pagetitle" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="0" style="background-image: url(http://placehold.it/921X533);">
+    <div class="ed_img_overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-4 col-sm-6">
+                    <div class="page_title">
+                        <h2>Account</h2>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-8 col-sm-6">
+                    <ul class="breadcrumb">
+                        <li><a href="/">home</a></li>
+                        <li><i class="fa fa-chevron-left"></i></li>
+                        <li><a href="/profile">account</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Breadcrumb end-->
+
+    <div class="ed_transprentbg ed_toppadder80 ed_bottompadder80">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
+                    <div class="ed_teacher_div">
+                        <div class="row">
+                            <h2>Hi {{ request.user.username }}, welcome to your account settings</h2>
+                        </div>
+                        <div class="row ed_toppadder40">
+                            <h3>Username</h3>
+                            <p>You can change your username, which impacts how you sign in</p>
+                            <form class="ed_contact_form">
+                                <div class="form-group">
+                                    <label class="control-label">User Name :</label>
+                                    <input type="text" class="form-control" value="{{ request.user.username }}">
+                                </div>
+                                <a href="#" class="btn ed_btn ed_orange pull-right">Update</a>
+                            </form>
+                        </div>
+                        <div class="row">
+                            <h3>Password</h3>
+                            <p>You can change your password, which impacts how you sign in</p>
+                            <form class="ed_contact_form">
+                                <div class="form-group">
+                                    <label class="control-label">Password :</label>
+                                    <input type="password" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Confirm Password :</label>
+                                    <input type="password" class="form-control">
+                                </div>
+                                <a href="#" class="btn ed_btn ed_orange pull-right">Update</a>
+                            </form>
+                        </div>
+                        <div class="row">
+                            <h3>Email</h3>
+                            <p>You can add another email</p>
+                            <p>Primary Email: {{ request.user.email }}</p>
+                            <form class="ed_contact_form">
+                                <div class="form-group">
+                                    <label class="control-label">Email :</label>
+                                    <input type="email" class="form-control">
+                                </div>
+                                <a href="#" class="btn ed_btn ed_orange pull-right">Add</a>
+                            </form>
+                        </div>
+                        <div class="row">
+                            <form class="ed_contact_form">
+                                <h3>Names</h3>
+                                <p>Edit your names</p>
+                                <div class="form-group">
+                                    <label class="control-label">First Name :</label>
+                                    <input type="text" class="form-control" value="{{ request.user.firstname }}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Last Name :</label>
+                                    <input type="text" class="form-control" value="{{ request.user.lastname }}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Surname :</label>
+                                    <input type="text" class="form-control" value="{{ request.user.surname }}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Mobile Phone :</label>
+                                    {% if request.user.phone_number %}
+                                        <input type="text" class="form-control" value="{{ request.user.phone_number }}">
+                                        {% else %}
+                                        <input type="text" class="form-control">
+                                    {% endif %}
+                                </div>
+
+                                <a href="#" class="btn ed_btn ed_orange pull-right">Update</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{
+    "name": "Gathee",
+    "description": "Gathee's app.",
+    "keywords": [
+      "gathee"
+    ],
+    "website": "https://gathee.herokuapp.com/",
+    "repository": "https://github.com/xcixor/gathee",
+    "scripts": {
+    },
+    "formation": {
+      "web": {
+        "quantity": 2,
+        "size": "Performance-M"
+      }
+    },
+    "image": "heroku/python",
+    "buildpacks": [
+      {
+        "url": "https://github.com/heroku/heroku-buildpack-python.git"
+      }
+    ],
+    "environments": {
+      "test": {
+        "scripts": {
+        }
+      }
+    }
+  }

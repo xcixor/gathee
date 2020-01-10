@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+{{ block.super }}
+<link href="{% static 'css/student/student.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block content %}
+<!--Breadcrumb start-->
+<div class="ed_pagetitle" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="0" style="background-image: url(http://placehold.it/921X533);">
+    <div class="ed_img_overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-4 col-sm-6">
+                    <div class="page_title">
+                        <h2>About Nyota Music Academy</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Breadcrumb end-->
+
+    <!-- jumbotron start -->
+    <div class="ed_graysection ed_toppadder90 ed_bottompadder90">
+        <div class="container">
+            <div class="jumbotron">
+                <h2 class="display-4">Hello, {{ request.user }}</h1>
+                <p class="lead">Welcome to your courses dashboard. Select any to start learning!</p>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- jumbotron end -->
+    <!-- courses section start -->
+    <div class="ed_transprentbg ed_toppadder80 ed_bottompadder80">
+        <div class="container">
+            {% for course in student_courses %}
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="ed_team_member">
+                        <div class="ed_team_member_img">
+                            <img src="{{ course.course.course_image.url }}" alt="{{ tutor }}" height="300px" width="100%">
+                        </div>
+                        <div class="ed_team_member_description">
+                            <h4>{{ course.course.title }}</h4>
+                            <p>{{ course.course.description }}</p>
+                            <a href="/course/{{ course.course.pk }}" class="ed_getinvolved">Go to Course <i class="fas fa-long-arrow-alt-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div><!-- /.container -->
+    </div>
+    <!-- courses section end -->
+{% endblock %}

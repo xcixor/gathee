@@ -1,0 +1,15 @@
+.price {
+    color: #167ac6;;
+}
+
+.alert {
+    margin-bottom: 0 !important;
+}
+
+.widget p {
+    margin-bottom: 0;
+}
+
+.error{
+    color: red;
+}

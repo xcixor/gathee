@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+{{ block.super }}
+<link href="{% static 'css/auth/signup.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block content %}
+<!--Breadcrumb start-->
+<div class="ed_pagetitle" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="0" style="background-image: url(http://placehold.it/921X533);">
+    <div class="ed_img_overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-4 col-sm-6">
+                    <div class="page_title">
+                        <h2>Signup</h2>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-8 col-sm-6">
+                    <ul class="breadcrumb">
+                        <li><a href="/">home</a></li>
+                        <li><i class="fa fa-chevron-left"></i></li>
+                        <li><a href="/signup">signup</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Breadcrumb end-->
+
+    <div class="ed_transprentbg ed_toppadder80 ed_bottompadder80">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
+                    <div class="ed_teacher_div">
+                        <div class="ed_heading_top">
+                            <h3>sign up</h3>
+                        </div>
+                        <div class="row ed_toppadder40">
+                            <form class="ed_contact_form" method="POST" action="/signup">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label class="control-label">User Name :</label>
+                                    <input type="text" name="username" class="form-control">
+                                    {% if form.username.errors %}
+                                    {% for error in form.username.errors %}
+                                    <div class="error">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Email :</label>
+                                    <input type="email" name="email" class="form-control">
+                                    {% if form.email.errors %}
+                                    {% for error in form.email.errors %}
+                                        <div class="error">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Password :</label>
+                                    <input type="password" name="password" class="form-control">
+                                    {% if form.password1.errors %}
+                                    {% for error in form.password1.errors %}
+                                        <div class="error">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Confirm Password :</label>
+                                    <input type="password" name="password2" class="form-control">
+                                    {% if form.password2.errors %}
+                                    {% for error in form.password2.errors %}
+                                        <div class="error">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">First Name :</label>
+                                    <input type="text" name="firstname" class="form-control">
+                                    {% if form.firstname.errors %}
+                                    {% for error in form.firstname.errors %}
+                                        <div class="error">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Last Name :</label>
+                                    <input type="text" name="lastname" class="form-control">
+                                    {% if form.lastname.errors %}
+                                    {% for error in form.lasttname.errors %}
+                                        <div class="error">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Surname :</label>
+                                    <input type="text" name="surname" class="form-control">
+                                    {% if form.surname.errors %}
+                                    {% for error in form.surname.errors %}
+                                        <div class="error">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    <!-- <div class="row"> -->
+                                        <!-- <div class="col-md-2 col-lg-2 col-sm-4 col-xs-4">
+                                            {{ form.country_code }}
+                                        </div> -->
+                                        <!-- <div class="col-md-10 col-lg-10 col-sm-8 col-xs-8">
+                                            <input type="tel" name="phone_number" placeholder="Phone Number" class="form-control">
+                                        </div> -->
+                                        <label class="control-label">MobilePhone No :</label>
+                                        <input type="tel" name="phone_number" placeholder="Phone Number" class="form-control">
+                                        {% if form.phone_number.errors %}
+                                        {% for error in form.phone_number.errors %}
+                                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                                            <div class="error">
+                                                <strong>{{ error|escape }}</strong>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                        {% endif %}
+                                    <!-- </div> -->
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn ed_btn ed_orange pull-right">Signup</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

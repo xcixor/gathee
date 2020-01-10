@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+{{ block.super }}
+<link href="{% static 'css/index/index.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block content %}
+<!--Page main section start-->
+<div id="educo_wrapper">
+    <div class="ed_slider_form_section">
+    <!--Slider start-->
+    <div class=bg-image>
+
+    </div>
+        <section cla ss="ed_mainslider">
+            <article class="content">
+                <div class="rev_slider_wrapper">
+                    <!-- START REVOLUTION SLIDER 5.0 auto mode -->
+                    <div id="rev_slider_4_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container"
+                    data-alias="classicslider1">
+                    <div id="rev_slider" class="rev_slider "  data-version="5.0">
+                        <ul>
+                            <!-- SLIDE  -->
+                            <li data-transition="slotslide-horizontal">
+
+                                <!-- MAIN IMAGE -->
+                                <img src="{% static 'images/piano.png' %}"  alt="piano image">
+                                <div class="ed_course_single_image_overlay"></div>
+
+                                <!-- LAYER NR. 1 -->
+                                    <div class="tp-caption NotGeneric-Title   tp-resizeme rs-parallaxlevel-0"
+
+                                         data-x="['left','left','left','left']" data-hoffset="['45','60','60','40']"
+                                        data-y="['top','top','top','top']" data-voffset="['170','175','155','115']"
+
+
+                                        data-width="none"
+                                        data-height="none"
+                                        data-whitespace="nowrap"
+                                        data-transform_idle="o:1;"
+
+                                         data-transform_in="x:-50px;skX:100px;opacity:0;s:2000;e:Power4.easeInOut;"
+                                         data-transform_out="s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                                        data-start="1510"
+                                        data-splitin="none"
+                                        data-splitout="none"
+                                        data-responsive_offset="on"
+
+                                        data-elementdelay="0.05"
+
+                                        style="z-index: 5; white-space: nowrap; font-size: 40px; color:#fff; font-family: 'Roboto Slab', serif;">We help students reach
+                                        their music goals
+                                    </div>
+                                    <div class="tp-caption NotGeneric-Title   tp-resizeme rs-parallaxlevel-0"
+
+                                        data-x="['left','left','left','left']" data-hoffset="['45','60','60','40']"
+                                        data-y="['top','top','top','top']" data-voffset="['230','215','180','170']"
+
+                                        data-width="none"
+                                        data-height="none"
+                                        data-whitespace="nowrap"
+                                        data-transform_idle="o:1;"
+
+                                         data-transform_in="x:-50px;skX:100px;opacity:0;s:2000;e:Power4.easeInOut;"
+                                         data-transform_out="s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                                        data-start="1810"
+                                        data-splitin="none"
+                                        data-splitout="none"
+                                        data-responsive_offset="on"
+
+                                        data-elementdelay="0.05"
+
+                                        style="z-index: 5; white-space: nowrap; font-size: 40px; color:#fff;     font-family: 'Roboto Slab', serif;">faster and more efficiently.
+                                    </div>
+
+                            </li>
+
+                        </ul>
+                    </div><!-- END REVOLUTION SLIDER -->
+                    </div><!-- END  -->
+                </div><!-- END REVOLUTION SLIDER WRAPPER -->
+            </article>
+        </section>
+    </div>
+
+    <!--Our expertise section one start -->
+    <div class="ed_transprentbg ed_toppadder100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="ed_heading_top ed_toppadder50">
+                        <h3>Our Courses</h3>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="ed_populer_areas_slider">
+                        <div class="owl-carousel owl-theme">
+                            {% for course in courses %}
+                            <div class="item">
+                                <div class="ed_item_img">
+                                    <img src="{{ course.course_image.url }}" alt="{{ course.title }}" height="165"  width="260">
+                                </div>
+                                <!-- classes offered -->
+                                <div class="ed_item_description">
+                                    <h4>{{ course.title }}</h4>
+                                    <p>{{ course.description }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <a href="/courses" class="ed_getinvolved">Go to Courses <i class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.container -->
+    </div>
+    <!--skill section start -->
+
+    <div class="ed_graysection ed_toppadder90 ed_bottompadder90">
+        <div class="container">
+            <div class="row">
+                {% for video in demo_videos %}
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="skill_section">
+                        <div class="ed_video_section">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <div class="ed_video">
+                                    <div class="videoWrapper">
+                                        <video width="100%" height="315" controls>
+                                            <source src='{{ MEDIA_URL }}{{ video }}' type='video/mp4'>
+                                                Your browser does not support the video tag.
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>{{ video.premium_video.name }}</h4>
+                        <p>{{ video.premium_video.description }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--Page main section end-->
+
+{% endblock %}
+{% block scripts %}
+{{ block.super }}
+<script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'}),_trfd.push({'ap':'cpsh'},{'server':'p3plcpnl0769'})
+// Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.
+</script><script src='https://img1.wsimg.com/tcc/tcc_l.combined.1.0.6.min.js'>
+</script>
+{% endblock %}

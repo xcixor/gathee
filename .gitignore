@@ -7,3 +7,5 @@ src/core/media/
 .vscode
 *media*
 .vscode/
+*.txt*
+*.tfvars* 

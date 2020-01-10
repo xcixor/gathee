@@ -70,6 +70,12 @@ workflows:
               ignore:
                 - master
                 - develop
+          when: on_success
+          staging_deployment
+            filters:
+            branches:
+              only:
+                - develop
       - integration_deployment_hold:
           type: approval
           requires:
@@ -112,10 +118,4 @@ workflows:
               ignore:
                 - master
                 - develop
-  deploy-staging:
-    jobs:
-      - staging_deployment:
-          filters:
-            branches:
-              only:
-                - develop
+                

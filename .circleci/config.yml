@@ -71,11 +71,11 @@ workflows:
                 - master
                 - develop
           when: on_success
-          - staging_deployment:
-              filters:
-              branches:
-                only:
-                  - develop
+          staging_deployment:
+            filters:
+            branches:
+              only:
+                - develop
       - integration_deployment_hold:
           type: approval
           requires:

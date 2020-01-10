@@ -49,11 +49,11 @@ initialise_terraform() {
 }
 
 destroy_previous_infrastructure(){
-    terraform destroy -lock=false -auto-approve -var=github-branch="${CIRCLE_BRANCH}" -var=django_environment="${ENVIRONMENT}"
+    terraform destroy -lock=false -auto-approve -var=github_branch="${CIRCLE_BRANCH}" -var=django_environment="${ENVIRONMENT}" -var=gs_credentials="${SERVICE_ACCOUNT}"
 }
 
 build_current_infrastructure() {
-    terraform apply -lock=false -auto-approve -var=github-branch="${CIRCLE_BRANCH}" -var=django_environment="${ENVIRONMENT}"
+    terraform apply -lock=false -auto-approve -var=github_branch="${CIRCLE_BRANCH}" -var=django_environment="${ENVIRONMENT}" -var=gs_credentials="${SERVICE_ACCOUNT}"
 }
 
 destroy_infrastructure() {

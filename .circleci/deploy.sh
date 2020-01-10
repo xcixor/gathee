@@ -54,7 +54,7 @@ check_branch(){
         #     done
         # done <<< "${INTEGRATION_ENVIRONMENTAL_VARIABLES}"
         # echo -e "$tvars" > ~/gathee-deployment/infrastructure/terraform.tfvars
-        echo "${INTEGRATION_ENVIRONMENTAL_VARIABLES}" | base64 --decode -ni > ~/gathee-deployment/infrastructure/terraform.tfvars
+        echo "${INTEGRATION_ENVIRONMENTAL_VARIABLES}" | base64 -di > ~/gathee-deployment/infrastructure/terraform.tfvars
     fi
 }
 

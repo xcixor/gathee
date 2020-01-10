@@ -121,11 +121,11 @@ workflows:
           branches:
             only:
               - develop
-    - staging_deployment_hold:
-        type: approval
-        requires:
-          - integration_deployment
-        filters:
-          branches:
-            only:
-              - develop
+      - staging_deployment_hold:
+          type: approval
+          requires:
+            - integration_deployment
+          filters:
+            branches:
+              only:
+                - develop

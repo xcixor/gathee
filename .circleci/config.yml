@@ -79,6 +79,12 @@ workflows:
               ignore:
                 - master
                 - develop
+      - staging_deployment:
+          requires:
+            - integration_deployment
+          filters:
+            branches:
+              only: develop
       - production_deployment:
           requires:
             - test

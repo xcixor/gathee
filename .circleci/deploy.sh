@@ -42,7 +42,7 @@ check_branch(){
         #     done
         # done <<< "${PRODUCTION_ENVIRONMENTAL_VARIABLES}"
         # echo -e "$tvars" > ~/gathee-deployment/infrastructure/terraform.tfvars
-        echo "${PRODUCTION_ENVIRONMENTAL_VARIABLES}" | base64 --decode -n > ~/gathee-deployment/infrastructure/terraform.tfvars
+        echo "${PRODUCTION_ENVIRONMENTAL_VARIABLES}" | base64 --decode -ni > ~/gathee-deployment/infrastructure/terraform.tfvars
     else
         export ENVIRONMENT="staging"
         export DJANGO_SETTINGS_MODULE=core.settings.${ENVIRONMENT}
@@ -54,7 +54,7 @@ check_branch(){
         #     done
         # done <<< "${INTEGRATION_ENVIRONMENTAL_VARIABLES}"
         # echo -e "$tvars" > ~/gathee-deployment/infrastructure/terraform.tfvars
-        echo "${INTEGRATION_ENVIRONMENTAL_VARIABLES}" | base64 --decode > ~/gathee-deployment/infrastructure/terraform.tfvars
+        echo "${INTEGRATION_ENVIRONMENTAL_VARIABLES}" | base64 --decode -ni > ~/gathee-deployment/infrastructure/terraform.tfvars
     fi
 }
 

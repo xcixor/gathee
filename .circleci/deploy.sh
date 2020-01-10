@@ -30,7 +30,14 @@ check_branch(){
     else
         export ENVIRONMENT="staging"
         export DJANGO_SETTINGS_MODULE=core.settings.${ENVIRONMENT}
-        echo "${INTEGRATION_ENVIRONMENTAL_VARIABLES}" > ~/gathee-deployment/infrastructure/terraform.tfvars
+
+        str=${INTEGRATION_ENVIRONMENTAL_VARIABLES}
+        IFS=' ' # space ( ) is set as delimiter
+        read -ra ADDR <<< "$str" # str is read into an array as tokens separated by IFS
+        for i in "${ADDR[@]}"; do # access each element of array
+            echo "$i" > ~/gathee-deployment/infrastructure/terraform.tfvars
+        done
+        # echo "${INTEGRATION_ENVIRONMENTAL_VARIABLES}" > ~/gathee-deployment/infrastructure/terraform.tfvars
     fi
 }
 

@@ -115,16 +115,6 @@ workflows:
   deploy-staging:
     jobs:
       - staging_deployment:
-          requires:
-            - staging_deployment_hold
-          filters:
-            branches:
-              only:
-                - develop
-      - staging_deployment_hold:
-          type: approval
-          requires:
-            - integration_deployment
           filters:
             branches:
               only:

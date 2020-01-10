@@ -10,27 +10,27 @@ download_terraform() {
 
 prepare_deployment_script() {
     # export HOME=/home/circleci/gathee
-    echo "${SERVICE_ACCOUNT}" | base64 --decode > account.json
+    # echo "${SERVICE_ACCOUNT}" > account.json
     cd ~
     git clone -b develop https://github.com/xcixor/gathee-deployment.git
     cd ~/gathee-deployment/account
     touch account.json
-    echo "${SERVICE_ACCOUNT}" | base64 --decode > account.json
+    echo "${SERVICE_ACCOUNT}" > account.json
 }
 
 check_branch(){
     if [[ "$CIRCLE_BRANCH" == 'develop' ]]; then
         export ENVIRONMENT="staging"
         export DJANGO_SETTINGS_MODULE=core.settings.${ENVIRONMENT}
-        echo "${STAGING_ENVIRONMENTAL_VARIABLES}" | base64 --decode > ~/gathee-deployment/infrastructure/terraform.tfvars
+        echo "${STAGING_ENVIRONMENTAL_VARIABLES}" > ~/gathee-deployment/infrastructure/terraform.tfvars
     elif [[ "$CIRCLE_BRANCH" == 'master' ]]; then
         export ENVIRONMENT="production"
         export DJANGO_SETTINGS_MODULE=core.settings.${ENVIRONMENT}
-        echo "${PRODUCTION_ENVIRONMENTAL_VARIABLES}" | base64 --decode > ~/gathee-deployment/infrastructure/terraform.tfvars
+        echo "${PRODUCTION_ENVIRONMENTAL_VARIABLES}" > ~/gathee-deployment/infrastructure/terraform.tfvars
     else
         export ENVIRONMENT="staging"
         export DJANGO_SETTINGS_MODULE=core.settings.${ENVIRONMENT}
-        echo "${INTEGRATION_ENVIRONMENTAL_VARIABLES}" | base64 --decode > ~/gathee-deployment/infrastructure/terraform.tfvars
+        echo "${INTEGRATION_ENVIRONMENTAL_VARIABLES}" > ~/gathee-deployment/infrastructure/terraform.tfvars
     fi
 }
 

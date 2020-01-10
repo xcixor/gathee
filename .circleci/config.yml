@@ -1,4 +1,17 @@
-version: 2
+version: 2.1
+
+references:
+  deployment_steps: &deployment_steps
+    working_directory: ~/gathee
+    docker:
+      - image: circleci/python:3.6-jessie-browsers
+    steps:
+      - checkout
+      - run:
+          name: Deploy Application
+          command: |
+            bash .circleci/deploy.sh create_infrastructure
+
 jobs:
   test:
     working_directory: ~/gathee
@@ -22,8 +35,80 @@ jobs:
             pipenv run coverage html --rcfile=../../.coveragerc
             export COVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN}
             pipenv run coveralls --rcfile=../../.coveragerc
+
+integration_deployment:
+  <<: *deployment_steps
+
+staging_deployment:
+  <<: *deployment_steps
+
+production_deployment:
+  <<: *deployment_steps
+
+destroy_integration:
+  working_directory: ~/gathee
+  docker:
+    - image: circleci/python:3.6-jessie-browsers
+  steps:
+    - checkout
+    - run:
+        name: Destroy Application
+        command: |
+          bash .circleci/deploy.sh destroy_infrastructure
+
 workflows:
   version: 2
   test-application:
     jobs:
       - test
+      - integration_deployment:
+          requires:
+            - test
+            - integration_deployment_hold
+          filters:
+            branches:
+              ignore:
+                - master
+                - develop
+      - integration_deployment_hold:
+          type: approval
+          requires:
+           - test
+          filters:
+            branches:
+              ignore:
+                - master
+                - develop
+      - production_deployment:
+          requires:
+            - test
+            - production_deployment_hold
+          filters:
+            branches:
+              only:
+                - master
+      - production_deployment_hold:
+          type: approval
+          requires:
+           - test
+          filters:
+            branches:
+              only:
+                - master
+      - destroy_integration:
+          requires:
+            - destroy_integration_hold
+          filters:
+            branches:
+              ignore:
+                - master
+                - develop
+      - destroy_integration_hold:
+          type: approval
+          requires:
+           - test
+          filters:
+            branches:
+              ignore:
+                - master
+                - develop

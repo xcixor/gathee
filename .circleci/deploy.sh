@@ -22,38 +22,14 @@ check_branch(){
     if [[ "$CIRCLE_BRANCH" == 'develop' ]]; then
         export ENVIRONMENT="staging"
         export DJANGO_SETTINGS_MODULE=core.settings.${ENVIRONMENT}
-        # tvars=""
-        # while IFS=' ' read -ra ADDR; do
-        #     for i in "${ADDR[@]}"; do
-        #         tvars+="$i "
-        #         tvars+="\n"
-        #     done
-        # done <<< "${STAGING_ENVIRONMENTAL_VARIABLES}"
-        # echo -e "$tvars" > ~/gathee-deployment/infrastructure/terraform.tfvars
-        echo "${STAGING_ENVIRONMENTAL_VARIABLES}" | base64 --decode > ~/gathee-deployment/infrastructure/terraform.tfvars
+        echo "${STAGING_ENVIRONMENTAL_VARIABLES}" | base64 -di > ~/gathee-deployment/infrastructure/terraform.tfvars
     elif [[ "$CIRCLE_BRANCH" == 'master' ]]; then
         export ENVIRONMENT="production"
         export DJANGO_SETTINGS_MODULE=core.settings.${ENVIRONMENT}
-        # tvars=""
-        # while IFS=' ' read -ra ADDR; do
-        #     for i in "${ADDR[@]}"; do
-        #         tvars+="$i "
-        #         tvars+="\n"
-        #     done
-        # done <<< "${PRODUCTION_ENVIRONMENTAL_VARIABLES}"
-        # echo -e "$tvars" > ~/gathee-deployment/infrastructure/terraform.tfvars
-        echo "${PRODUCTION_ENVIRONMENTAL_VARIABLES}" | base64 --decode -ni > ~/gathee-deployment/infrastructure/terraform.tfvars
+        echo "${PRODUCTION_ENVIRONMENTAL_VARIABLES}" | base64 -di > ~/gathee-deployment/infrastructure/terraform.tfvars
     else
         export ENVIRONMENT="staging"
         export DJANGO_SETTINGS_MODULE=core.settings.${ENVIRONMENT}
-        # tvars=""
-        # while IFS=' ' read -ra ADDR; do
-        #     for i in "${ADDR[@]}"; do
-        #         tvars+="$i "
-        #         tvars+="\n"
-        #     done
-        # done <<< "${INTEGRATION_ENVIRONMENTAL_VARIABLES}"
-        # echo -e "$tvars" > ~/gathee-deployment/infrastructure/terraform.tfvars
         echo "${INTEGRATION_ENVIRONMENTAL_VARIABLES}" | base64 -di > ~/gathee-deployment/infrastructure/terraform.tfvars
     fi
 }

@@ -36,25 +36,25 @@ jobs:
             export COVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN}
             pipenv run coveralls --rcfile=../../.coveragerc
 
-integration_deployment:
-  <<: *deployment_steps
+  integration_deployment:
+    <<: *deployment_steps
 
-staging_deployment:
-  <<: *deployment_steps
+  staging_deployment:
+    <<: *deployment_steps
 
-production_deployment:
-  <<: *deployment_steps
+  production_deployment:
+    <<: *deployment_steps
 
-destroy_integration:
-  working_directory: ~/gathee
-  docker:
-    - image: circleci/python:3.6-jessie-browsers
-  steps:
-    - checkout
-    - run:
-        name: Destroy Application
-        command: |
-          bash .circleci/deploy.sh destroy_infrastructure
+  destroy_integration:
+    working_directory: ~/gathee
+    docker:
+      - image: circleci/python:3.6-jessie-browsers
+    steps:
+      - checkout
+      - run:
+          name: Destroy Application
+          command: |
+            bash .circleci/deploy.sh destroy_infrastructure
 
 workflows:
   version: 2

@@ -139,4 +139,4 @@ workflows:
     triggers:
       - on:
           pull_request:
-            types: [merge]
+            types: [synchronize]

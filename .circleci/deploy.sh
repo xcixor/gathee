@@ -17,11 +17,11 @@ prepare_deployment_script() {
 }
 
 check_branch(){
-    if [[ "$CIRCLE_BRANCH" == 'develop' ]]; then
+    if [[ "$BRANCH" == 'develop' ]]; then
         export ENVIRONMENT="staging"
         export DJANGO_SETTINGS_MODULE=core.settings.${ENVIRONMENT}
         echo "${STAGING_ENVIRONMENTAL_VARIABLES}" | base64 -di > ~/gathee-deployment/infrastructure/terraform.tfvars
-    elif [[ "$CIRCLE_BRANCH" == 'master' ]]; then
+    elif [[ "$BRANCH" == 'master' ]]; then
         export ENVIRONMENT="production"
         export DJANGO_SETTINGS_MODULE=core.settings.${ENVIRONMENT}
         echo "${PRODUCTION_ENVIRONMENTAL_VARIABLES}" | base64 -di > ~/gathee-deployment/infrastructure/terraform.tfvars
@@ -39,11 +39,11 @@ initialise_terraform() {
 }
 
 destroy_previous_infrastructure(){
-    terraform destroy -lock=false -auto-approve -var=github_branch="${CIRCLE_BRANCH}" -var=django_environment="${ENVIRONMENT}" -var=gs_credentials="${SERVICE_ACCOUNT}"
+    terraform destroy -lock=false -auto-approve -var=github_branch="${BRANCH}" -var=django_environment="${ENVIRONMENT}" -var=gs_credentials="${SERVICE_ACCOUNT}"
 }
 
 build_current_infrastructure() {
-    terraform apply -lock=false -auto-approve -var=github_branch="${CIRCLE_BRANCH}" -var=django_environment="${ENVIRONMENT}" -var=gs_credentials="${SERVICE_ACCOUNT}"
+    terraform apply -lock=false -auto-approve -var=github_branch="${BRANCH}" -var=django_environment="${ENVIRONMENT}" -var=gs_credentials="${SERVICE_ACCOUNT}"
 }
 
 destroy_infrastructure() {

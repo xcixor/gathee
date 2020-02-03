@@ -81,10 +81,20 @@ workflows:
                 - develop
       - staging_deployment:
           requires:
-            - integration_deployment
+            - test
+            - staging_deployment_hold
           filters:
             branches:
-              only: develop
+              only:
+                - develop
+      - staging_deployment_hold:
+          type: approval
+          requires:
+           - test
+          filters:
+            branches:
+              only:
+                - develop
       - production_deployment:
           requires:
             - test
@@ -118,3 +128,20 @@ workflows:
               ignore:
                 - master
                 - develop
+
+workflows:
+  version: 2
+  deploy-production:
+    jobs:
+      - production_deployment:
+          filters:
+            branches:
+              only:
+                - master
+  schedule-workflow:
+    triggers:
+      - on:
+          pull_request:
+            types: [merge]
+
+

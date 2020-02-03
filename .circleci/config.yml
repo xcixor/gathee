@@ -70,10 +70,11 @@ workflows:
               ignore:
                 - master
                 - develop
-          run:
-              name: "change circleci branch"
-              command: |
-                echo 'export BRANCH="${CIRCLE_BRANCH}"'
+          jobs:
+            - run:
+                  name: "change circleci branch"
+                  command: |
+                    echo 'export BRANCH="${CIRCLE_BRANCH}"'
       - integration_deployment_hold:
           type: approval
           requires:

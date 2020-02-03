@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="utf-8" />
     <title>Nyota Music Academy</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -8,6 +9,8 @@
     <meta name="keywords" content="Educo, html template, Education template" />
     <meta name="author"  content="Kamleshyadav"/>
     <meta name="MobileOptimized" content="320" />
+    <link rel="shortcut icon" href="{% static 'images/header/fav.png' %}" />
+
 
     <title>
     {% block title %}
@@ -16,7 +19,7 @@
     </title>
 
     {% block styles %}
-    {% load static %}
+
     <link href="{% static 'css/common/main.css' %}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     {% endblock %}

@@ -95,22 +95,22 @@ workflows:
             branches:
               only:
                 - develop
-      - production_deployment:
-          requires:
-            - test
-            - production_deployment_hold
-          filters:
-            branches:
-              only:
-                - master
-      - production_deployment_hold:
-          type: approval
-          requires:
-           - test
-          filters:
-            branches:
-              only:
-                - master
+      # - production_deployment:
+      #     requires:
+      #       - test
+      #       - production_deployment_hold
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
+      # - production_deployment_hold:
+      #     type: approval
+      #     requires:
+      #      - test
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
       - destroy_integration:
           requires:
             - destroy_integration_hold
@@ -128,9 +128,6 @@ workflows:
               ignore:
                 - master
                 - develop
-
-workflows:
-  version: 2
   deploy-production:
     jobs:
       - production_deployment:
@@ -143,5 +140,3 @@ workflows:
       - on:
           pull_request:
             types: [merge]
-
-

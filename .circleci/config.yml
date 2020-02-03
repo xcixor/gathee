@@ -84,10 +84,10 @@ workflows:
           requires:
             - test
             - integration_deployment
-          filters:
-            branches:
-              only:
-                - develop
+          # filters:
+          #   branches:
+          #     only:
+          #       - develop
       - destroy_integration:
           requires:
             - destroy_integration_hold

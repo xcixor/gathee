@@ -68,7 +68,7 @@ workflows:
   test-application:
     jobs:
       - test
-      # - set-current-branch
+      - set-current-branch
       - integration_deployment:
           requires:
             - test

@@ -35,6 +35,11 @@ jobs:
             pipenv run coverage html --rcfile=../../.coveragerc
             export COVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN}
             pipenv run coveralls --rcfile=../../.coveragerc
+  set-current-branch:
+    - run:
+      name: set current branch
+      command: |
+        echo "export BRANCH=$CIRCLE_BRANCH" >> $BASH_ENV
 
   integration_deployment:
     <<: *deployment_steps
@@ -64,18 +69,13 @@ workflows:
       - integration_deployment:
           requires:
             - test
+            - set-current-branch
             - integration_deployment_hold
           filters:
             branches:
               ignore:
                 - master
                 - develop
-          # steps:
-          #   - run:
-          #         name: "change circleci branch"
-          #         command: echo 'export BRANCH="${CIRCLE_BRANCH}"'
-          environment:
-            BRANCH: ${CIRCLE_BRANCH}
       - integration_deployment_hold:
           type: approval
           requires:
@@ -86,14 +86,27 @@ workflows:
                 - master
                 - develop
       - staging_deployment:
-          type: approval
+          requires:
+            - integration_deployment
+          filters:
+            branches:
+              only: develop
+      - production_deployment:
           requires:
             - test
-            - integration_deployment
-          run:
-              name: "change circleci branch"
-              command: |
-                echo 'export BRANCH="develop"'
+            - production_deployment_hold
+          filters:
+            branches:
+              only:
+                - master
+      - production_deployment_hold:
+          type: approval
+          requires:
+           - test
+          filters:
+            branches:
+              only:
+                - master
       - destroy_integration:
           requires:
             - destroy_integration_hold

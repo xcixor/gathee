@@ -36,11 +36,12 @@ jobs:
             export COVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN}
             pipenv run coveralls --rcfile=../../.coveragerc
   set-current-branch:
-    - checkout
-    - run:
-      name: set current branch
-      command: |
-        echo "export BRANCH=$CIRCLE_BRANCH" >> $BASH_ENV
+    steps:
+      - checkout
+      - run:
+        name: "set current branch"
+        command: |
+          echo 'export BRANCH=$CIRCLE_BRANCH' >> $BASH_ENV
 
   integration_deployment:
     <<: *deployment_steps

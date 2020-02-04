@@ -45,6 +45,16 @@ jobs:
           name: "set current branch"
           command: |
             echo 'export BRANCH=$CIRCLE_BRANCH' >> $BASH_ENV
+  set-production-branch:
+    working_directory: ~/gathee
+    docker:
+      - image: circleci/python:3.7-browsers-legacy
+      - image: circleci/postgres:9.6.9-alpine
+    steps:
+      - run:
+          name: "set current branch"
+          command: |
+            echo 'export BRANCH="master"' >> $BASH_ENV
 
   integration_deployment:
     <<: *deployment_steps
@@ -75,6 +85,10 @@ workflows:
           type: approval
           requires:
             - test
+      - set-production-branch:
+          type: approval
+          requires:
+            - test
       - integration_deployment:
           requires:
             - test
@@ -94,28 +108,16 @@ workflows:
               ignore:
                 - master
                 - develop
-      - staging_deployment:
-          requires:
-            - integration_deployment
-          filters:
-            branches:
-              only: develop
       - production_deployment:
           requires:
             - test
             - production_deployment_hold
-          filters:
-            branches:
-              only:
-                - master
       - production_deployment_hold:
           type: approval
           requires:
            - test
-          filters:
-            branches:
-              only:
-                - master
+           - set-production-branch
+           - integration_deployment
       - destroy_integration:
           requires:
             - destroy_integration_hold

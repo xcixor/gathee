@@ -88,7 +88,7 @@ workflows:
       - set-production-branch:
           type: approval
           requires:
-            - test
+            - integration_deployment
       - integration_deployment:
           requires:
             - test
@@ -110,14 +110,11 @@ workflows:
                 - develop
       - production_deployment:
           requires:
-            - test
             - production_deployment_hold
       - production_deployment_hold:
           type: approval
           requires:
-           - test
            - set-production-branch
-           - integration_deployment
       - destroy_integration:
           requires:
             - destroy_integration_hold

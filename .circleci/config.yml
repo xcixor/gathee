@@ -43,9 +43,9 @@ jobs:
     steps:
       - checkout
       - run:
-        name: "set current branch"
-        command: |
-          echo 'export BRANCH=$CIRCLE_BRANCH' 
+          name: "set current branch"
+          command: |
+            echo 'export BRANCH=$CIRCLE_BRANCH' >> $BASH_ENV
 
   integration_deployment:
     <<: *deployment_steps

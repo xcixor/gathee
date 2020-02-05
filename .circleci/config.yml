@@ -81,10 +81,20 @@ workflows:
                 - develop
       - staging_deployment:
           requires:
-            - integration_deployment
+            - test
+            - staging_deployment_hold
           filters:
             branches:
-              only: develop
+              only:
+                - develop
+      - staging_deployment_hold:
+          type: approval
+          requires:
+           - test
+          filters:
+            branches:
+              only:
+                - develop
       - production_deployment:
           requires:
             - test

@@ -58,7 +58,7 @@ jobs:
 
 workflows:
   version: 2
-  test-application:
+  test-and-deploy-application:
     jobs:
       - test
       - integration_deployment:
@@ -82,15 +82,6 @@ workflows:
       - staging_deployment:
           requires:
             - test
-            - staging_deployment_hold
-          filters:
-            branches:
-              only:
-                - develop
-      - staging_deployment_hold:
-          type: approval
-          requires:
-           - test
           filters:
             branches:
               only:
@@ -98,15 +89,6 @@ workflows:
       - production_deployment:
           requires:
             - test
-            - production_deployment_hold
-          filters:
-            branches:
-              only:
-                - master
-      - production_deployment_hold:
-          type: approval
-          requires:
-           - test
           filters:
             branches:
               only:

@@ -8,4 +8,4 @@ src/core/media/
 *media*
 .vscode/
 *.txt*
-*.tfvars* 
+*.tfvars*

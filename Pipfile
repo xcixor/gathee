@@ -11,7 +11,7 @@ pylint = "*"
 flake8 = "*"
 
 [packages]
-django = "==2.2.8"
+django = "==2.2.13"
 gunicorn = "*"
 psycopg2 = "==2.8.4"
 pillow = "*"
